@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/dto/WorkerInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/dto/WorkerInfo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
