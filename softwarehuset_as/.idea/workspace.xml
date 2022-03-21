@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/AcceptanceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/AcceptanceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +47,25 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.Ree">
+    <configuration name="Feature: add_activity" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/use_cases/add_activity.feature" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="softwarehuset" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
+      <option name="SUGGESTED_NAME" value="Feature: add_activity" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AcceptanceTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="softwarehuset" />
       <option name="PACKAGE_NAME" value="dtu.calculator" />
@@ -87,9 +107,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.Ree" />
+      <item itemvalue="Cucumber Java.Feature: add_activity" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.Ree" />
+        <item itemvalue="Cucumber Java.Feature: add_activity" />
       </list>
     </recent_temporary>
   </component>

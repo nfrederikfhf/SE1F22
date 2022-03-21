@@ -13,9 +13,11 @@ For example, the class name CucumberTests (Test with an s) will be ignored by Ma
 */
 
 @RunWith(Cucumber.class)
-@CucumberOptions(plugin="summary"
-		 ,features={"features"}
-		 ,publish= false
+@CucumberOptions(
+		plugin="summary",
+		features={"use_cases"},
+		publish= false,
+		glue = { "grp18.software.acceptanceTests"}
 		 )
 public class AcceptanceTest {
 }
