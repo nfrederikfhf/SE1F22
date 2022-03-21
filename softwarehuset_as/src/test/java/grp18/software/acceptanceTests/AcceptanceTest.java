@@ -1,4 +1,4 @@
-package dtu.calculator;
+package grp18.software.acceptanceTests;
 
 
 import org.junit.runner.RunWith;
@@ -17,5 +17,5 @@ For example, the class name CucumberTests (Test with an s) will be ignored by Ma
 		 ,features={"features"}
 		 ,publish= false
 		 )
-public class CucumberTest {
+public class AcceptanceTest {
 }
