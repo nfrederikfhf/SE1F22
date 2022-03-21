@@ -9,6 +9,13 @@ public class ActivityInfo {
     private Calendar endDate;
     private int timeBudget;
 
+    public ActivityInfo(String activityName, Calendar startDate, Calendar endDate, int timeBudget){
+    this.activityName = activityName;
+    this.startDate = startDate;
+    this.endDate = endDate;
+
+    }
+
     private void addWorker(Worker worker){
 
     }
@@ -18,7 +25,7 @@ public class ActivityInfo {
     }
 
     private String activityStatus(){
-        
+
     }
 
 
