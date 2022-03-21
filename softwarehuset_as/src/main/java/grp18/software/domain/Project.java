@@ -1,4 +1,4 @@
-package grp18.software.app;
+package grp18.software.domain;
 
 import grp18.software.domain.Worker;
 import java.util.Calendar;
