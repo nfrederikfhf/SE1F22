@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/library/Project.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/dtu/calculator/CucumberTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/AcceptanceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +57,29 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Ree" type="JUnit" factoryName="JUnit" temporary="true">
+      <module name="put_your_project_name_here" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="grp18.software.acceptanceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="PACKAGE_NAME" value="grp18.software.acceptanceTests" />
+      <option name="MAIN_CLASS_NAME" value="grp18.software.acceptanceTests.AcceptanceTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.Ree" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
