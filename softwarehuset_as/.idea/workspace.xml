@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,7 @@
   </component>
   <component name="RunManager">
     <configuration name="AcceptanceTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
-      <module name="put_your_project_name_here" />
+      <module name="softwarehuset" />
       <option name="PACKAGE_NAME" value="dtu.calculator" />
       <option name="MAIN_CLASS_NAME" value="dtu.calculator.AcceptanceTest" />
       <option name="METHOD_NAME" value="" />
@@ -58,7 +57,7 @@
       </method>
     </configuration>
     <configuration name="Ree" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="put_your_project_name_here" />
+      <module name="softwarehuset" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="grp18.software.acceptanceTests.*" />
@@ -71,6 +70,19 @@
       <option name="MAIN_CLASS_NAME" value="grp18.software.acceptanceTests.AcceptanceTest" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="softwarehuset" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="softwarehuset" />
+      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
