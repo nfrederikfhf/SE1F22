@@ -4,6 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+    <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/app/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Project.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Event.java" afterDir="false" />
+    </list>
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,14 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -54,6 +67,7 @@
       <recent name="C:\Users\Bruger\IdeaProjects\SE1F22\softwarehuset_as\use_cases" />
     </key>
   </component>
+  <component name="RunManager" selected="JUnit.Ree">
   <component name="RunManager" selected="Cucumber Java.Feature: add_worker">
     <configuration name="Feature: add_worker" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
@@ -158,15 +172,16 @@
       <item itemvalue="Cucumber Java.Scenario: An activity is added to a project" />
       <item itemvalue="Cucumber Java.Scenario: It is tried to add an activity to two projects" />
       <item itemvalue="Cucumber Java.Feature: add_worker" />
+      <item itemvalue="Cucumber Java.Scenario: An activity is added to a project" />
       <item itemvalue="JUnit.AcceptanceTest" />
       <item itemvalue="JUnit.Ree" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Ree" />
         <item itemvalue="Cucumber Java.Feature: add_worker" />
         <item itemvalue="Cucumber Java.Scenario: It is tried to add an activity to two projects" />
         <item itemvalue="Cucumber Java.Scenario: An activity is added to a project" />
-        <item itemvalue="JUnit.Ree" />
       </list>
     </recent_temporary>
   </component>
