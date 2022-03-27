@@ -15,6 +15,6 @@ Scenario: It is tried to add two activities with same name to a project
     When  The project manager of project "22001" adds an activity with name "Activity 1" to project "22001"
     Then  The activity with name "Activity 1" is contained in project "22001"'s list of activities
     When  The project manager of project "22001" adds an activity with name "Activity 1" to project "22001"
-    Then  The error message "Name for activity already used in the project" given
+    Then  The error message "Name for activity already used in the project" is given
 
 

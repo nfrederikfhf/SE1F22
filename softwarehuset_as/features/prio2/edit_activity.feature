@@ -14,4 +14,4 @@ Scenario: The project manager edits a non-existing activity
     Given a project with number "22001" and name "Project 1" exists
     And the project does not have an activity with name "Activity 1"
     When the activity with name "Activity 1" is edited with a new name "Activity 2"
-    Then the error "No activity with that name is found, and it is unable to be edited" is returned
+    Then the error message "No activity with that name is found, and it is unable to be edited" is given

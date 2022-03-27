@@ -23,4 +23,4 @@ Scenario: The project manager tries to add a worker with 20 activities to anothe
     And the worker "NFF" is working on "20" activities during some time in the duration of the activity
     When the project manager of project "22001" adds an activity with name "Activity 1" to project "22001"
     And the project manager of project "22001" assigns the worker "NFF" to "Activity 1" of project "22001"
-    Then the error message "The worker cannot work on more than 20 activities at the same time" given
+    Then the error message "The worker cannot work on more than 20 activities at the same time" is given
