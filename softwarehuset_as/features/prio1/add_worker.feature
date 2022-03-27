@@ -5,7 +5,8 @@ Feature: Add a worker to an activity
 
 Scenario: The project manager adds a worker to an activity in a project
     Given A project with number "22001" and name "Project 1" exists
-    And   A worker with initials "JHM" has been assigned project manager of project "22001"
+    And   There exists a worker with initials "JHM" from system database
+    And   The worker "JHM" has been assigned project manager of project "22001"
     And   There exists a worker with initials "NFF" from system database
     And   The worker "NFF" is working on "0" activities
     When  The project manager of project "22001" adds an activity with name "Activity 1" to project "22001"
@@ -16,7 +17,8 @@ Scenario: The project manager adds a worker to an activity in a project
 
 Scenario: The project manager tries to add a worker with 20 activities to another activity
     Given A project with number "22001" and name "Project 1" exists
-    And   A worker with initials "JHM" has been assigned project manager of project "22001"
+    And   There exists a worker with initials "JHM" from system database
+    And   The worker "JHM" has been assigned project manager of project "22001"
     And   There exists a worker with initials "NFF" from system database
     And   The worker "NFF" is working on "20" activities during some time in the duration of the activity
     When  The project manager of project "22001" adds an activity with name "Activity 1" to project "22001"
