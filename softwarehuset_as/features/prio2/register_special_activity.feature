@@ -1,4 +1,4 @@
-#Vinn
+#Vinn (JHM)
 Feature: Register activities
   Description: The workers can register for activities such as sick days or vacation
   Actors: Project manager, worker

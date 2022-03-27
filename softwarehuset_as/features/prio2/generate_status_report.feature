@@ -1,4 +1,4 @@
-#William
+#William (JHM)
 Feature: A status report is generated
     Description: The project manager generates a status report.
     Actor: Project manager
