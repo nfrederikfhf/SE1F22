@@ -6,21 +6,14 @@ Actor: A worker
 
 Scenario: A worker wants to change the timeframe of an event, and there is no overlap with new timeframe.
     Given there exists a worker with initials "JHM" from system database
-    And a project with number "22001" and name "Project 1" exists
-    And the activity with name "Activity 1" is contained in project "22001"'s list of activities
-    And there exists an activity with title "Make cucumber files"
     And the worker "JHM" has an event from "12:00" to "14:00" on date "2022,2,5" with ID "000001"
     And the worker "JHM" has an event from "8:00" to "10:00" on date "2022,2,5" with ID "000002"
-    When the worker changes the Timeframe of the event with ID "000002" to "8:00" to "11:00"
-    Then the timeframe is changed
-    And the event with ID "000002" is still to be found in the eventlist
+    When the worker changes the timeframe of the event with ID "000002" to "8:00" to "11:00"
+    Then the event with ID "000002" of worker "JHM" has timeframe "8:00" to "11:00"
 
 Scenario: A worker wants to change the timeframe of an event,
 but there is an overlap in timeframe with another event
     Given there exists a worker with initials "JHM" from system database
-    And a project with number "22001" and name "Project 1" exists
-    And the activity with name "Activity 1" is contained in project "22001"'s list of activities
-    And there exists an activity with title "Make cucumber files"
     And the worker "JHM" has an event from "12:00" to "14:00" on date "2022,2,5" with ID "000001"
     And the worker "JHM" has an event from "8:00" to "10:00" on date "2022,2,5" with ID "000002"
     When the worker changes the Timeframe of the event with ID "000002" to "8:00" to "13:00"
@@ -30,11 +23,12 @@ but there is an overlap in timeframe with another event
 Scenario: A worker wants to change the timeframe of an event,
 but there is an overlap in timeframe with another event at the limit of a timeframe
     Given there exists a worker with initials "JHM" from system database
-    And a project with number "22001" and name "Project 1" exists
-    And the activity with name "Activity 1" is contained in project "22001"'s list of activities
-    And there exists an activity with title "Make cucumber files"
     And the worker "JHM" has an event from "12:00" to "14:00" on date "2022,2,5" with ID "000001"
     And the worker "JHM" has an event from "8:00" to "10:00" on date "2022,2,5" with ID "000002"
     When the worker changes the Timeframe of the event with ID "000002" to "8:00" to "12:00"
     Then The timeframe of the event with ID "000002" is not changed
     And the error message "Event is overlapping another event" is given
+
+Scenario: Change date of event with no overlap
+
+Scenario: Change date of event with overlap
