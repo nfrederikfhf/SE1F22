@@ -16,7 +16,7 @@ but there is an overlap in timeframe with another event
     Given there exists a worker with initials "JHM" from system database
     And the worker "JHM" has an event from "12:00" to "14:00" on date "2022,2,5" with ID "000001"
     And the worker "JHM" has an event from "8:00" to "10:00" on date "2022,2,5" with ID "000002"
-    When the worker changes the Timeframe of the event with ID "000002" to "8:00" to "13:00"
+    When the worker changes the timeframe of the event with ID "000002" to "8:00" to "13:00"
     Then The timeframe of the event with ID "000002" is not changed
     And the error message "Event is overlapping another event" is given
 
@@ -25,7 +25,7 @@ but there is an overlap in timeframe with another event at the limit of a timefr
     Given there exists a worker with initials "JHM" from system database
     And the worker "JHM" has an event from "12:00" to "14:00" on date "2022,2,5" with ID "000001"
     And the worker "JHM" has an event from "8:00" to "10:00" on date "2022,2,5" with ID "000002"
-    When the worker changes the Timeframe of the event with ID "000002" to "8:00" to "12:00"
+    When the worker changes the timeframe of the event with ID "000002" to "8:00" to "12:00"
     Then The timeframe of the event with ID "000002" is not changed
     And the error message "Event is overlapping another event" is given
 
