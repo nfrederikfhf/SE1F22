@@ -29,5 +29,4 @@ public class Worker {
         return activities.size();
     }
 
-
 }

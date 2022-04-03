@@ -32,9 +32,10 @@ public class WorkerSteps {
     }
 
     @Given("there exists a worker with initials {string} from system database")
-    public void there_exists_a_worker_with_initials_from_system_database(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void there_exists_a_worker_with_initials_from_system_database(String initials) {
+        worker = new Worker(initials);
+
+        assertEquals(worker.getInitials(), initials);
     }
 
     @Then("the worker {string} is working on project {string}")
