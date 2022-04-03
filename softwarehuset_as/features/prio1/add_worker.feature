@@ -8,7 +8,7 @@ Scenario: The project manager adds a worker to an activity in a project
     And there exists a worker with initials "JHM" from system database
     And the worker "JHM" has been assigned project manager of project "22001"
     And there exists a worker with initials "NFF" from system database
-    And the worker "NFF" is working on "0" activities
+    And the worker "NFF" is working on 0 activities
     And the activity with name "Activity 1" is contained in project "22001"'s list of activities
     When the project manager of project "22001" assigns the worker "NFF" to "Activity 1" of project "22001"
     Then the worker "NFF" is working on "Activity 1"
@@ -19,7 +19,7 @@ Scenario: The project manager tries to add a worker with 20 activities to anothe
     And there exists a worker with initials "JHM" from system database
     And the worker "JHM" has been assigned project manager of project "22001"
     And there exists a worker with initials "NFF" from system database
-    And the worker "NFF" is working on "20" activities
+    And the worker "NFF" is working on 20 activities
     And the activity with name "Activity 1" is contained in project "22001"'s list of activities
     When the project manager of project "22001" assigns the worker "NFF" to "Activity 1" of project "22001"
     Then the error message "The worker cannot work on more than 20 activities at the same time" is given

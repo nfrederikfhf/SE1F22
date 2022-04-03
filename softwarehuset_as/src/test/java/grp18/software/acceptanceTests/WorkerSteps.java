@@ -1,21 +1,34 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.domain.Worker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 public class WorkerSteps {
 
+    private Worker worker;
+
     @Given("a worker with initials {string} has been assigned project manager of project {string}")
-    public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
+    public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, String string2) {
+        worker = new Worker(initials);
+        assertEquals(worker.getInitials(),initials);
+        // Figure out how project will work.
+
         throw new io.cucumber.java.PendingException();
     }
 
-    @Given("the worker {string} is working on {string} activities")
-    public void the_worker_is_working_on_activities(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Given("the worker {string} is working on {int} activities")
+    public void the_worker_is_working_on_activities(String initials, int activityCount) {
+        int activities = 0;
+
+        worker = new Worker(initials);
+
+        activities = worker.getAmountOfActivities();
+        assertEquals(activityCount,activities);
     }
 
     @Given("there exists a worker with initials {string} from system database")
