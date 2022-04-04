@@ -1,22 +1,32 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.app.ActivityNotFoundException;
+import grp18.software.dto.ActivityInfo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class ActivitySteps {
+import static org.junit.Assert.assertEquals;
 
+public class ActivitySteps {
+    private ActivityNotFoundException errorMessage;
+    private ActivityInfo activity;
+
+    public ActivitySteps(ActivityNotFoundException errorMessage, ActivityInfo activity){
+        this.errorMessage = errorMessage;
+        this.activity = activity;
+    }
 
     @Then("the error message {string} is given")
-    public void the_error_message_is_given(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_error_message_is_given(String errorMessage) throws Exception {
+        assertEquals(errorMessage, this.errorMessage.getErrorMessage());
     }
 
     @When("the activity with name {string} is edited with a new name {string}")
-    public void the_activity_with_name_is_edited_with_a_new_name(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_activity_with_name_titleis_edited_with_a_new_name(String string, String string2) {
+        activity = new ActivityInfo(activityName,);
+
+
     }
 
     @Then("the activity with name {string} is not contained in project {string}'s list of activities")

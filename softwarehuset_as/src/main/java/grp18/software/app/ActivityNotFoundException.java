@@ -1,7 +1,14 @@
 package grp18.software.app;
 
 public class ActivityNotFoundException extends Exception{
-    public ActivityNotFoundException(String errorMessage) {
-        super(errorMessage);
+    private String errorMessage = "";
+
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }
+

@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="Workspace xml now works">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/prio1/add_worker.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/prio1/add_worker.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/app/ActivityNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/app/ActivityNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ActivitySteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ActivitySteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ProjectSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/WorkerSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/WorkerSteps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/EventSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/EventSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
