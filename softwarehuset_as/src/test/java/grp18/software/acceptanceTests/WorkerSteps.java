@@ -12,13 +12,13 @@ public class WorkerSteps {
 
     private Worker worker;
 
-    @Given("a worker with initials {string} has been assigned project manager of project {string}")
-    public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, String string2) {
+    @Given("a worker with initials {string} has been assigned project manager of project {int}")
+    public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
         worker = new Worker(initials);
         assertEquals(worker.getInitials(),initials);
         // Figure out how project will work.
-
-        throw new io.cucumber.java.PendingException();
+        worker.setProjectManager(true);
+        
     }
 
     @Given("the worker {string} is working on {int} activities")

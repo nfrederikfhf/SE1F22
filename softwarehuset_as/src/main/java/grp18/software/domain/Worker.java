@@ -25,6 +25,10 @@ public class Worker {
         return hoursWorked;
     }
 
+    public void setProjectManager(Boolean boolVal){
+        projectManager = boolVal;
+    }
+
     public int getAmountOfActivities() {
         return activities.size();
     }
