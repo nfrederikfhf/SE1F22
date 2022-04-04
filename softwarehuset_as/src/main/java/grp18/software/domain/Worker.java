@@ -36,7 +36,11 @@ public class Worker {
 
     public void addManagedProject(int projectID){
         Project project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
-
         managementList.add(project);
+    }
+
+    public void addActivities(String activityName){
+        Activity.createActivity(activityName, null,null);
+        activities.add(Activity.getActivity(activityName));
     }
 }

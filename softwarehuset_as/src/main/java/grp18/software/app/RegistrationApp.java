@@ -16,4 +16,5 @@ public class RegistrationApp extends Observable{
     public Project getProjectFromID(int projectID) {
         return projects.stream().filter(x -> x.getID()==(projectID)).findFirst().orElse(null);
     }
+
 }

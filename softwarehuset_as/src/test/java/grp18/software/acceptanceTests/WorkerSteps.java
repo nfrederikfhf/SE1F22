@@ -11,29 +11,26 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 public class WorkerSteps {
     private RegistrationApp rAPP;
+    private Worker worker;
 
     public WorkerSteps(RegistrationApp rAPP){
         this.rAPP = rAPP;
     }
 
-    private Worker worker;
 
     @Given("a worker with initials {string} has been assigned project manager of project {int}")
     public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
         worker = new Worker(initials);
-        assertEquals(worker.getInitials(),initials);
-        //rAPP.getProjectFromID(projectID).setManager().eq
-        // Figure out how project will work.
+        rAPP.getProjectFromID(projectID).setManager(worker);
         worker.setProjectManager(true);
-
-        
     }
 
     @Given("the worker {string} is working on {int} activities")
     public void the_worker_is_working_on_activities(String initials, int activityCount) {
-        int activities = 0;
-
         worker = new Worker(initials);
+
+
+
 
         activities = worker.getAmountOfActivities();
         assertEquals(activityCount,activities);

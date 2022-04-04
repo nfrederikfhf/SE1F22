@@ -25,6 +25,8 @@ public class Project{
     public int getID(){
         return this.ID;
     }
-
+    public void setManager(Worker worker){
+        projectManager = worker;
+    }
 
 }
