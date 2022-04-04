@@ -1,6 +1,7 @@
 package grp18.software.acceptanceTests;
 
 import grp18.software.app.ActivityNotFoundException;
+import grp18.software.domain.Worker;
 import grp18.software.dto.ActivityInfo;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -24,7 +25,8 @@ public class ActivitySteps {
 
     @When("the activity with name {string} is edited with a new name {string}")
     public void the_activity_with_name_titleis_edited_with_a_new_name(String string, String string2) {
-        activity = new ActivityInfo(activityName,);
+        activity = new ActivityInfo(initials);
+        assertEquals(activity.getInitials(),initials);
 
 
     }
