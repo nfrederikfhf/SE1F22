@@ -1,27 +1,49 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.app.RegistrationApp;
+import grp18.software.domain.Worker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 public class WorkerSteps {
+    private RegistrationApp rAPP;
 
-    @Given("a worker with initials {string} has been assigned project manager of project {string}")
-    public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public WorkerSteps(RegistrationApp rAPP){
+        this.rAPP = rAPP;
     }
 
-    @Given("the worker {string} is working on {string} activities")
-    public void the_worker_is_working_on_activities(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    private Worker worker;
+
+    @Given("a worker with initials {string} has been assigned project manager of project {int}")
+    public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
+        worker = new Worker(initials);
+        assertEquals(worker.getInitials(),initials);
+        //rAPP.getProjectFromID(projectID).setManager().eq
+        // Figure out how project will work.
+        worker.setProjectManager(true);
+
+        
+    }
+
+    @Given("the worker {string} is working on {int} activities")
+    public void the_worker_is_working_on_activities(String initials, int activityCount) {
+        int activities = 0;
+
+        worker = new Worker(initials);
+
+        activities = worker.getAmountOfActivities();
+        assertEquals(activityCount,activities);
     }
 
     @Given("there exists a worker with initials {string} from system database")
-    public void there_exists_a_worker_with_initials_from_system_database(String string) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void there_exists_a_worker_with_initials_from_system_database(String initials) {
+        worker = new Worker(initials);
+
+        assertEquals(worker.getInitials(), initials);
     }
 
     @Then("the worker {string} is working on project {string}")

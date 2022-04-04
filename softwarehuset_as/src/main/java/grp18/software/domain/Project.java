@@ -22,6 +22,9 @@ public class Project{
     }
 
 
+    public int getID(){
+        return this.ID;
+    }
 
 
 }
