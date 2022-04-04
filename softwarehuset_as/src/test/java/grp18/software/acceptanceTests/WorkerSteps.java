@@ -1,5 +1,6 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Worker;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -9,6 +10,11 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 public class WorkerSteps {
+    private RegistrationApp rAPP;
+
+    public WorkerSteps(RegistrationApp rAPP){
+        this.rAPP = rAPP;
+    }
 
     private Worker worker;
 
@@ -16,8 +22,10 @@ public class WorkerSteps {
     public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
         worker = new Worker(initials);
         assertEquals(worker.getInitials(),initials);
+        //rAPP.getProjectFromID(projectID).setManager().eq
         // Figure out how project will work.
         worker.setProjectManager(true);
+
         
     }
 

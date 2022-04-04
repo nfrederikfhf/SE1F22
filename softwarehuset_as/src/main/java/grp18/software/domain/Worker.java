@@ -1,7 +1,8 @@
 package grp18.software.domain;
 
+import grp18.software.app.RegistrationApp;
 import io.cucumber.java.bs.A;
-
+import  grp18.software.app.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,4 +34,9 @@ public class Worker {
         return activities.size();
     }
 
+    public void addManagedProject(int projectID){
+        Project project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
+
+        managementList.add(project);
+    }
 }
