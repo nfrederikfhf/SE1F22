@@ -19,7 +19,7 @@ public class ProjectSteps {
     }
 
     @Then("the activity with name {string} is contained in project {string}'s list of activities")
-    public void the_activity_with_name_is_contained_in_project_s_list_of_activities(String string, String string2) {
+    public void given_the_activity_with_name_is_contained_in_project_s_list_of_activities(String string, String string2) {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }

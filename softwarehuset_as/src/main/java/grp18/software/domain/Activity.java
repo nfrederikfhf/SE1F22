@@ -1,4 +1,4 @@
 package grp18.software.domain;
 
-public class Activity {
+abstract public class Activity {
 }
