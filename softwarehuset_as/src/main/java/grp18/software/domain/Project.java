@@ -10,12 +10,16 @@ public class Project{
     private Calendar startDate;
     private Calendar endDate;
 
-    public Project(String name, Calendar startDate, Calendar endDate){
-        this.name = name;
-        //this.ID = system.projectList.length+1
-        this.startDate = startDate;
-        this.endDate = endDate;
+    public Project(String name){
+        this(name,null,null);
     }
+
+    public Project(String name, Calendar startDate, Calendar endDate){
+            this.name = name;
+            //this.ID = system.projectList.length+1
+            this.startDate = startDate;
+            this.endDate = endDate;
+        }
 
     public void assignManager(Worker projectManager){
         this.projectManager = projectManager;
