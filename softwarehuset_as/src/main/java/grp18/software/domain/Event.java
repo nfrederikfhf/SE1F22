@@ -19,20 +19,35 @@ public class Event {
         this.ID = ID;
     }
 
-    int getID(){
+    public int getID(){
         return this.ID;
     }
 
-    Calendar getStartTime(){
+    public Calendar getStartTime(){
         return this.startTime;
     }
 
-    Calendar getEndTime(){
+    public Calendar getEndTime(){
         return this.endTime;
     }
 
-    Calendar getDate(){
+    public Calendar getDate(){
         return this.date;
+    }
+
+    public void setStartTime(Calendar startTime){
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(Calendar endTime){
+        this.endTime = endTime;
+    }
+    public void setDate(Calendar date){
+        this.date = date;
+    }
+
+    public Activity getRelatedActivity(){
+        return relatedActivity;
     }
 
 }

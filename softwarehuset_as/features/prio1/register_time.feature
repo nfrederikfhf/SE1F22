@@ -15,7 +15,7 @@ Scenario: A worker adds an event to register hours
 
 Scenario: A worker adds an event that overlaps with another events timeframe
     Given there exists a worker with initials "JHM" from system database
-    And the worker "JHM" has an event from "12,00" to "14,00" on date "2022,2,5" with ID 1 related to activty with name "Activity 1"
+    And the worker "JHM" has an event from "12,00" to "14,00" on date "2022,2,5" with ID 1 related to activity with name "Activity 1"
     When the worker "JHM" registers working hours from "08,00" to "17,00" on date "2022,2,5" with ID 2 related to activity "Activity 1" of project 22001
     Then the event labeled "work" from "08,00" to "17,00" on date "2022,2,5" with ID 2 is not registered to the worker "JHM"'s eventlist
     And the error message "Event is overlapping another event" is given

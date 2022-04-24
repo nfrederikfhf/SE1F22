@@ -1,6 +1,7 @@
 package grp18.software.domain;
 
 import grp18.software.app.EventOverlapException;
+import grp18.software.tools.StringToCalender;
 import io.cucumber.java.bs.A;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class Worker {
     }
 
     public void registerHours(Calendar startTime, Calendar endTime, Calendar date, Activity relatedActivity) throws EventOverlapException{
-        int ID = events.size()+1;
+        int ID = events.size()+1; //ID 0 reserved for dummy ID in editEvent
         Event event = new Event(startTime, endTime, date, relatedActivity, ID);
         if (!validateNoEventOverlap(event)){
             throw new EventOverlapException("Event is overlapping another event");
@@ -58,5 +59,15 @@ public class Worker {
         return this.events.stream().filter(x -> x.getID()==ID).findFirst().orElse(null);
     }
 
+    public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException{
 
+        StringToCalender dateData = new StringToCalender(newDate, newStartTime, newEndTime);
+        Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, getEventFromID(eventID).getRelatedActivity(), 0);
+        if (!validateNoEventOverlap(dummyEvent)){
+            throw new EventOverlapException("Event is overlapping another event");
+        }
+        getEventFromID(eventID).setStartTime(dateData.startTimeCal);
+        getEventFromID(eventID).setEndTime(dateData.endTimeCal);
+        getEventFromID(eventID).setDate(dateData.dateCal);
+    }
 }
