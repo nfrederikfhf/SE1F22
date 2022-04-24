@@ -17,4 +17,11 @@ public class RegistrationApp extends Observable{
         return projects.stream().filter(x -> x.getID()==(projectID)).findFirst().orElse(null);
     }
 
+    public void addProject(Project project){
+        this.projects.add(project);
+    }
+
+    public List<Project> getProjects(){
+        return this.projects;
+    }
 }
