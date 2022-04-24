@@ -13,4 +13,8 @@ public class Activity {
         this.startDate = startDate;
         this.endDate = endDate;
     }
+
+    public String getActivityName() {
+        return activityName;
+    }
 }

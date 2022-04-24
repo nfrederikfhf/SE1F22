@@ -1,10 +1,15 @@
 package grp18.software.domain;
 
 import grp18.software.domain.Worker;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Objects;
 
 public class Project{
     private String name;
+    private List<Activity> activities = new ArrayList<>();
     private int ID;
     private Worker projectManager;
     private Calendar startDate;
@@ -31,6 +36,10 @@ public class Project{
     }
     public void setManager(Worker worker){
         projectManager = worker;
+    }
+
+    public Activity getActivityFromName(String name){
+        return this.activities.stream().filter(x -> Objects.equals(x.getActivityName(), name)).findFirst().orElse(null);
     }
 
 }
