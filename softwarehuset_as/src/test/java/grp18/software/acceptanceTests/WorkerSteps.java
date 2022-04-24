@@ -20,6 +20,7 @@ public class WorkerSteps {
 
     @Given("a worker with initials {string} has been assigned project manager of project {int}")
     public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
+        // Assigns the project manager
         worker = new Worker(initials);
         rAPP.getProjectFromID(projectID).setManager(worker);
         worker.setProjectManager(true);
@@ -27,17 +28,15 @@ public class WorkerSteps {
 
     @Given("the worker {string} is working on {int} activities")
     public void the_worker_is_working_on_activities(String initials, int activityCount) {
+        // Checks count of current activites worked on
         worker = new Worker(initials);
-
-
-
-
-        activities = worker.getAmountOfActivities();
+        int activities = worker.getAmountOfActivities();
         assertEquals(activityCount,activities);
     }
 
     @Given("there exists a worker with initials {string} from system database")
     public void there_exists_a_worker_with_initials_from_system_database(String initials) {
+        // Checks if the worker exists
         worker = new Worker(initials);
 
         assertEquals(worker.getInitials(), initials);
@@ -54,6 +53,4 @@ public class WorkerSteps {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
-
-
 }
