@@ -27,9 +27,9 @@ public class StringToCalender {
         for (String s : dateStringList) dateListInt.add(Integer.valueOf(s));
         for (String s : startTimeStringList) stIntList.add(Integer.valueOf(s));
         for (String s : endTimeStringList) etIntList.add(Integer.valueOf(s));
-        GregorianCalendar startTimeCalender = new GregorianCalendar(stIntList.get(0), stIntList.get(1), stIntList.get(2), stIntList.get(3), stIntList.get(4), stIntList.get(5));
-        GregorianCalendar endTimeCalender = new GregorianCalendar(etIntList.get(0), etIntList.get(1), etIntList.get(2), etIntList.get(3), etIntList.get(4), etIntList.get(5));
-        GregorianCalendar dateCalender = new GregorianCalendar(dateListInt.get(0), dateListInt.get(1), dateListInt.get(2));
+        GregorianCalendar startTimeCalender = new GregorianCalendar(stIntList.get(0).intValue(), stIntList.get(1).intValue(), stIntList.get(2).intValue(), stIntList.get(3).intValue(), stIntList.get(4).intValue());
+        GregorianCalendar endTimeCalender = new GregorianCalendar(etIntList.get(0).intValue(), etIntList.get(1).intValue(), etIntList.get(2).intValue(), etIntList.get(3).intValue(), etIntList.get(4).intValue());
+        GregorianCalendar dateCalender = new GregorianCalendar(dateListInt.get(0).intValue(), dateListInt.get(1).intValue(), dateListInt.get(2).intValue());
         this.startTimeCal = startTimeCalender;
         this.endTimeCal = endTimeCalender;
         this.dateCal = dateCalender;

@@ -18,10 +18,21 @@ public class RegistrationApp extends Observable{
     }
 
     public void addProject(Project project){
+        project.setID(projects.size()+22001);
         this.projects.add(project);
     }
 
     public List<Project> getProjects(){
         return this.projects;
+    }
+
+    public void addWorker(Worker worker){
+        workers.add(worker);
+    }
+
+    public List<Worker> getWorkers() {return this.workers;}
+
+    public Worker getWorkerFromInitials(String initials) {
+        return workers.stream().filter(x -> x.getInitials().equals(initials)).findFirst().orElse(null);
     }
 }

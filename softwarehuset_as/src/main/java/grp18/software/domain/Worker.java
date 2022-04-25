@@ -39,17 +39,16 @@ public class Worker {
         managementList.add(project);
     }
 
-    public void addActivities(String activityName){
-        Activity.createActivity(activityName, null,null);
-        activities.add(Activity.getActivity(activityName));
-    }
-
     public int getAmountOfActivities() {
         return activities.size();
     }
 
+    public void addActivity(Activity activity){
+        this.activities.add(activity);
+    }
+
     public Boolean validateNoEventOverlap(Event event){
-        List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate()==event.getDate()).collect(Collectors.toList());
+        List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(event.getDate())).collect(Collectors.toList());
         for (Event e : sameDateEvents){
             if ((e.getStartTime().getTimeInMillis()<event.getStartTime().getTimeInMillis()) || (e.getEndTime().getTimeInMillis()>event.getEndTime().getTimeInMillis()) ){
                 return false;
@@ -84,5 +83,9 @@ public class Worker {
         getEventFromID(eventID).setStartTime(dateData.startTimeCal);
         getEventFromID(eventID).setEndTime(dateData.endTimeCal);
         getEventFromID(eventID).setDate(dateData.dateCal);
+    }
+
+    public List<Event> getEvents(){
+        return this.events;
     }
 }
