@@ -9,6 +9,7 @@ public class ActivityInfo {
     private Calendar endDate;
     private int timeBudget;
     private Worker worker;
+    private Initials initials;
 
     public ActivityInfo(String activityName, Calendar startDate, Calendar endDate, int timeBudget){
         this.activityName = activityName;
@@ -16,8 +17,8 @@ public class ActivityInfo {
         this.endDate = endDate;
 
     }
-}
 
+    public String
     private void addWorker(Worker worker){
         this.worker = worker;
 
@@ -31,5 +32,8 @@ public class ActivityInfo {
     return status();
     }
 
+    public String getInitials() {
+    return initials;
+    }
 }
 

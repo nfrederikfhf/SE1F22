@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="Workspace xml now works">
-      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Activity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/domain/Activity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ActivitySteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ActivitySteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,5 +113,16 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Workspace xml now works" />
     <option name="LAST_COMMIT_MESSAGE" value="Workspace xml now works" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/grp18/software/dto/ActivityInfo.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
