@@ -35,6 +35,14 @@ public class Project{
         this.projectManager = projectManager;
     }
 
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
     public void setID(int ID){
         this.ID = ID;
     }

@@ -5,6 +5,7 @@ import grp18.software.domain.Activity;
 import grp18.software.domain.Worker;
 import grp18.software.tools.StringToCalender;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
 
 import static org.junit.Assert.assertFalse;
@@ -57,5 +58,15 @@ public class WorkerSteps {
     @Then("worker {string} is working on {int} activities")
     public void workerIsWorkingOnActivities(String workerInitials, int activityCount) {
         assertEquals(RApp.getWorkerFromInitials(workerInitials).getAmountOfActivities(), activityCount);
+    }
+
+    @When("the worker with initials {string} is being assigned project manager of project {int}")
+    public void the_worker_with_initials_is_being_assigned_project_manager_of_project(String workerInitials, Integer projectID) {
+        RApp.getProjectFromID(projectID).assignManager(RApp.getWorkerFromInitials(workerInitials));
+        RApp.getWorkerFromInitials(workerInitials).setProjectManager(true);
+    }
+    @Then("the worker {string} is managing a project")
+    public void the_worker_is_managing_project(String workerInitials) {
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getProjectManager());
     }
 }

@@ -23,6 +23,22 @@ public class ProjectSteps {
         this.RApp = RApp;
         this.errorMessage = errorMessage;
     }
+    @When("a project with name {string} is created in the system")
+    public void a_project_with_name_is_created(String projectName) {
+        project = new Project(projectName);
+        RApp.addProject(project);
+    }
+
+    @Then("a project with name {string} and ID {int} exists in the system")
+    public void a_project_with_name_and_id_exists_in_the_system(String projectName, Integer projectID) {
+        assertEquals(RApp.getProjectFromID(projectID).getName(), projectName);
+    }
+
+    @When("the project with ID {int} is being renamed to {string}")
+    public void the_project_with_id_is_being_renamed_to(Integer projectID, String projectName) {
+       RApp.getProjectFromID(projectID).setName(projectName);
+    }
+
 
     @Given("a project with number {int} and name {string} exists")
     public void a_project_with_number_and_name_exists(int projectNumber, String projectName) throws Exception {

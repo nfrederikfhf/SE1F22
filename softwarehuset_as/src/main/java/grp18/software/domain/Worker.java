@@ -34,6 +34,10 @@ public class Worker {
         projectManager = boolVal;
     }
 
+    public boolean getProjectManager(){
+        return projectManager;
+    }
+
     public void addManagedProject(int projectID){
         Project project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
         managementList.add(project);
