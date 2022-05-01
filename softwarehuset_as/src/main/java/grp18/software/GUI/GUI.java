@@ -31,11 +31,15 @@ public class GUI {
         Project project;
         Activity activity;
         Worker worker;
+        Event event;
 
         int projectID;
         String activityName;
         String workerName;
 
+        String date = "0,0,0";
+        String startTime = "0,0";
+        String endTime = "0,0";
 
         // Generate workers
         for(int i = 0; i < 20; i++){
@@ -124,6 +128,47 @@ public class GUI {
                     } catch (OperationNotAllowedException e) {
                         System.out.println(e); // Throw error
                     }
+                    break;
+                case 4:
+                    System.out.println("Which project do you want to register hours to?");
+                    try {
+                        projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
+                    }catch (Exception e){ // Catch any mistypes to avoid program exits.
+                        System.out.println("Input is not an integer, try again");
+                        break;
+                    }
+                    if(RegistrationApp.INSTANCE.getProjectFromID(projectID) == null){ // Check if project exists
+                        System.out.println("Project not found, try again");
+                        break;
+                    }
+                    project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
+
+                    System.out.println("You have selected project: " + projectID + "\nWhich activity are you working on?");
+                    activityName = scanner.nextLine();
+                    activity = project.getActivityFromName(activityName); // Get the activity object
+
+                    System.out.println("What are your initials?"); // Name from generated worker list
+                    workerName = scanner.nextLine();
+                    worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
+
+                    System.out.println("Input date: ");
+                    date = scanner.nextLine();
+                    System.out.println("Input start time as 'hour,minutes': ");
+                    startTime = scanner.nextLine();
+                    System.out.println("Input end time as 'hour,minutes': ");
+                    endTime = scanner.nextLine();
+
+                    StringToCalender dateData = new StringToCalender(date, startTime, endTime);
+
+                    //event = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity, 1);
+
+                    try {
+                        worker.registerHours(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity);
+                    } catch (EventOverlapException e) {
+                        System.out.println(e);
+                    }
+
+                    System.out.println("Hours added to activity: " + activityName + " in project: " + projectID);
                     break;
 
                 case 5:
