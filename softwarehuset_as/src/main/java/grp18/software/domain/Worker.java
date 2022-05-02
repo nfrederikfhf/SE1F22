@@ -7,6 +7,7 @@ import io.cucumber.java.bs.A;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,7 +65,7 @@ public class Worker {
         return true;
     }
 
-    public void registerHours(Calendar startTime, Calendar endTime, Calendar date, Activity relatedActivity) throws EventOverlapException{
+    public void registerHours(GregorianCalendar startTime, GregorianCalendar endTime, GregorianCalendar date, Activity relatedActivity) throws EventOverlapException{
         int ID = events.size()+1; //ID 0 reserved for dummy ID in editEvent
         Event event = new Event(startTime, endTime, date, relatedActivity, ID);
         if (!validateNoEventOverlap(event)){
@@ -80,7 +81,9 @@ public class Worker {
     public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException{
 
         StringToCalender dateData = new StringToCalender(newDate, newStartTime, newEndTime);
-        Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, getEventFromID(eventID).getRelatedActivity(), 0);
+        StringToCalender dateDataActivity = new StringToCalender("2222,02,02", "0,0", "0,0");
+        Activity dummyActivity = new Activity("dummyActivity", dateDataActivity.startTimeCal, dateDataActivity.endTimeCal);
+        Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, dummyActivity, 0);
         if (!validateNoEventOverlap(dummyEvent)){
             throw new EventOverlapException("Event is overlapping another event");
         }

@@ -1,16 +1,17 @@
 package grp18.software.domain;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Event {
-    private Calendar startTime;
-    private Calendar endTime;
-    private Calendar date;
+    private GregorianCalendar startTime;
+    private GregorianCalendar endTime;
+    private GregorianCalendar date;
     private int hoursWorked;
     private Activity relatedActivity;
     private int ID;
 
-    public Event(Calendar startTime, Calendar endTime, Calendar date, Activity relatedActivity, int ID){
+    public Event(GregorianCalendar startTime, GregorianCalendar endTime, GregorianCalendar date, Activity relatedActivity, int ID){
         this.startTime = startTime;
         this.endTime = endTime;
         //this.hoursWorked =
@@ -23,26 +24,26 @@ public class Event {
         return this.ID;
     }
 
-    public Calendar getStartTime(){
+    public GregorianCalendar getStartTime(){
         return this.startTime;
     }
 
-    public Calendar getEndTime(){
+    public GregorianCalendar getEndTime(){
         return this.endTime;
     }
 
-    public Calendar getDate(){
+    public GregorianCalendar getDate(){
         return this.date;
     }
 
-    public void setStartTime(Calendar startTime){
+    public void setStartTime(GregorianCalendar startTime){
         this.startTime = startTime;
     }
 
-    public void setEndTime(Calendar endTime){
+    public void setEndTime(GregorianCalendar endTime){
         this.endTime = endTime;
     }
-    public void setDate(Calendar date){
+    public void setDate(GregorianCalendar date){
         this.date = date;
     }
 

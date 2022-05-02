@@ -67,21 +67,21 @@ public class EventSteps {
         assertFalse(boll);
     }
 
-    @When("the worker changes the timeframe of the event with ID {int} to {string} to {string} with date {string}")
-    public void the_worker_changes_the_timeframe_of_the_event_with_id_to_to(int eventID, String newStartTime, String newEndTime, String newDate) {
+    @When("the worker {string} changes the timeframe of the event with ID {int} to {string} to {string} with date {string}")
+    public void the_worker_changes_the_timeframe_of_the_event_with_id_to_to(String workerInitials, int eventID, String newStartTime, String newEndTime, String newDate) {
         try {
-            worker.editEvent(eventID, newStartTime, newEndTime, newDate);
+            RApp.getWorkerFromInitials(workerInitials).editEvent(eventID, newStartTime, newEndTime, newDate);
         } catch (EventOverlapException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
     @Then("the event with ID {int} of worker {string} has timeframe {string} to {string} and date {string}")
-    public void the_event_with_id_of_worker_has_timeframe_to(int eventID, String workerName, String startTime, String endTime, String date) {
+    public void the_event_with_id_of_worker_has_timeframe_to(int eventID, String workerInitials, String startTime, String endTime, String date) {
         StringToCalender dateData = new StringToCalender(date, startTime, endTime);
-        assertTrue(worker.getEventFromID(eventID).getStartTime() == dateData.startTimeCal);
-        assertTrue(worker.getEventFromID(eventID).getEndTime() == dateData.endTimeCal);
-        assertTrue(worker.getEventFromID(eventID).getDate() == dateData.dateCal);
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getStartTime() == dateData.startTimeCal);
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getEndTime() == dateData.endTimeCal);
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getDate() == dateData.dateCal);
     }
 
     @Then("The timeframe of the event with ID {int} is not changed and still has timeframe {string} to {string} and date {string}")
