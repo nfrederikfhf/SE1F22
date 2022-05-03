@@ -1,5 +1,6 @@
 package grp18.software.domain;
 
+import grp18.software.app.ActivityNotFoundException;
 import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.app.TooManyActivitiesException;
@@ -59,6 +60,20 @@ public class Project{
         return this.activities.stream().filter(x -> Objects.equals(x.getActivityName(), name)).findFirst().orElse(null);
     }
 
+    public Activity checkActivityOverlap(String name) throws ActivityNotFoundException {
+        if(getActivityFromName(name) == null){
+            throw new ActivityNotFoundException("Activity not found");
+        }
+        return getActivityFromName(name);
+    }
+
+    public Activity checkActivityName(String name) throws ActivityNotFoundException {
+        if(getActivityFromName(name) == null) {
+            throw new ActivityNotFoundException("No activity with that name is found, and is unable to be edited");
+        }
+        return getActivityFromName(name);
+    }
+
     public void addActivity (Activity activity) throws OperationNotAllowedException {
         if (getActivityFromName(activity.getActivityName())!=null){
             throw new OperationNotAllowedException("Name for activity already used in the project");
@@ -102,5 +117,10 @@ public class Project{
             activity.printStatusReport(p);
         }
     }
+
+    public List<Activity> getActivities(){
+        return this.activities;
+    }
+
 
 }

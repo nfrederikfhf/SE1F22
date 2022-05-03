@@ -1,16 +1,18 @@
 package grp18.software.domain;
 
+import grp18.software.app.OperationNotAllowedException;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Objects;
 
 public class Activity {
     private String activityName;
     private Calendar startDate;
     private Calendar endDate;
     private List<Worker> workers = new ArrayList<>();
-
 
     public Activity(String activityName, Calendar startDate, Calendar endDate){
         this.activityName = activityName;
@@ -24,6 +26,10 @@ public class Activity {
 
     public void addWorker(Worker worker){
         this.workers.add(worker);
+    }
+
+    public void setActivityName (String activityName){
+        this.activityName = activityName;
     }
 
     public List<Worker> getWorkers(){
