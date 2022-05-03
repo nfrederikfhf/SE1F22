@@ -7,6 +7,7 @@ import grp18.software.domain.*;
 import grp18.software.dto.*;
 import grp18.software.tools.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,17 +15,13 @@ import java.util.Scanner;
 
 public class GUI {
 
-    private ErrorMessageHolder errorMessage;
-
-    public GUI( ErrorMessageHolder errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 
     public static void main(String[] args){
         String[] workerNames = {"Naira","Pete","Gianfranco","Esther","John","Tajana","Yuudai","Gert","Leonas","Rama",
                 "Elpídio","Kjeld","Enda","Tomislav","Halkyone","Haytham","Kliment","Mukesh","Enyinnaya","Emanoil"};
         // Possible change to initials if cumbersome
-        Scanner scanner = new Scanner(System.in);
+        // Define variables used in switch statement, as many are common across cases
+        Scanner scanner = new Scanner(System.in); // Read user input from terminal
         int selection;
         Boolean run = true;
         String projectName;
@@ -51,8 +48,11 @@ public class GUI {
         }
 
         System.out.println("Welcome to the project planner for Softwarehuset A/S");
-        while(run){
-            System.out.print("Following operations are available: \n 1: Create project \n 2: Add activity \n 3: Add worker \n 4: Register time \n 5: Assign project manager \n 6: Rename project \n 7: Rename activity \n 8: Edit registered time \n 9: Get status\n 0: Exit \n");
+        while(run){ // Runs until exit is selected by user
+            System.out.print("Following operations are available: \n 1: Create project \n 2: Add activity \n" +
+                    " 3: Add worker \n 4: Register time \n 5: Assign project manager \n" +
+                    " 6: Rename project \n 7: Rename activity \n 8: Edit registered time \n" +
+                    " 9: Get status\n 0: Exit \n");
 
             selection = Integer.parseInt(scanner.next() + scanner.nextLine()); // Read selection from terminal input
 
@@ -73,19 +73,20 @@ public class GUI {
                         System.out.println("Input project end date, as 'year,month,day': ");
                         endDate = scanner.nextLine();
                         endDatedata = new StringToCalender(endDate,"0,0", "0,0");
-                    }catch(Exception e){
+                    }catch(Exception e){ // Catch any input errors
                         System.out.println("Input is not correct try again");
                         break;
                     }
 
                     project = new Project(projectName,startDatedata.dateCal,endDatedata.dateCal);
-                    RegistrationApp.INSTANCE.addProject(project);
+                    RegistrationApp.INSTANCE.addProject(project); // Add the project, to this instance of Registration app
 
                     System.out.println("Project created with ID: " + project.getID());
                     break;
 
                 case 2: // Add an activity to a chosen project
-                    System.out.println("Which project do you want to add an activity to?");
+                    getAvailableProjects(scanner); // Generate a list of available projects if wanted
+                    System.out.println("What is the ID of the project you want to add an activity to?");
                     try {
                         projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
                     }catch (Exception e){ // Catch any mistypes to avoid program exits.
@@ -118,7 +119,8 @@ public class GUI {
                     break;
 
                 case 3: // Add one of the pre-generated workers to an activity in of the created projects
-                    System.out.println("Which project do you want to add worker to?");
+                    getAvailableProjects(scanner); // Generate a list of available projects if wanted
+                    System.out.println("What is the ID of the project you want to add worker to?");
                     try {
                         projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
                     }catch (Exception e){ // Catch any mistypes to avoid program exits.
@@ -130,24 +132,36 @@ public class GUI {
                         break;
                     }
                     project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
+                    getAvailableActivities(scanner, projectID); //Generate a list of available activities if wanted
 
                     System.out.println("You have selected project: " + projectID + "\nWhich activity?: ");
                     activityName = scanner.nextLine();
+                    if(project.getActivityFromName(activityName) == null){ // Check if activity exists
+                        System.out.println("Activity not found, try again");
+                        break;
+                    }
                     activity = project.getActivityFromName(activityName); // Get the activity object
 
+                    getAvailableWorkers(scanner); //Generate a list of available workers if wanted
                     System.out.println("Which worker do you want to add: ");
                     workerName = scanner.nextLine();
+                    if(RegistrationApp.INSTANCE.getWorkerFromInitials(workerName) == null){ // Check if worker exists
+                        System.out.println("Worker not found, try again");
+                        break;
+                    }
                     worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
 
                     try { // Check if worker is already added to activity
                         project.addWorkerToActivity(worker,activity);
                         System.out.println("Worker " + workerName + " has been added to activity " + activityName);
                     } catch (OperationNotAllowedException e) {
-                        System.out.println(e); // Throw error
+                        System.out.println("Worker is already found in activity!"); // Throw error
                     }
                     break;
+
                 case 4:
-                    System.out.println("Which project do you want to register hours to?");
+                    getAvailableProjects(scanner); // Generate a list of available projects if wanted
+                    System.out.println("What is the ID of the project you want to register hours to?");
                     try {
                         projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
                     }catch (Exception e){ // Catch any mistypes to avoid program exits.
@@ -160,15 +174,25 @@ public class GUI {
                     }
                     project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
 
+                    getAvailableActivities(scanner, projectID); //Generate a list of available activities if wanted
                     System.out.println("You have selected project: " + projectID + "\nWhich activity are you working on?");
                     activityName = scanner.nextLine();
+                    if(project.getActivityFromName(activityName) == null){ // Check if activity exists
+                        System.out.println("Activity not found, try again");
+                        break;
+                    }
                     activity = project.getActivityFromName(activityName); // Get the activity object
 
+                    getAvailableWorkers(scanner); //Generate a list of available workers if wanted
                     System.out.println("What are your initials?"); // Name from generated worker list
                     workerName = scanner.nextLine();
+                    if(RegistrationApp.INSTANCE.getWorkerFromInitials(workerName) == null){ // Check if worker exists
+                        System.out.println("Worker not found, try again");
+                        break;
+                    }
                     worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
 
-                    try {
+                    try { // To catch wrong input of the calender type
                         System.out.println("Input date: ");
                         date = scanner.nextLine();
                         System.out.println("Input start time as 'hour,minutes': ");
@@ -180,19 +204,19 @@ public class GUI {
                     }catch(Exception e){
                         System.out.println("Input is not correct try again");
                     }
-                    //event = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity, 1);
 
-                    try {
+                    try { // Check for overlap between time registered
                         worker.registerHours(startDatedata.startTimeCal, startDatedata.endTimeCal, startDatedata.dateCal, activity);
                     } catch (EventOverlapException e) {
-                        System.out.println(e);
+                        System.out.println("Time already registered in this timeframe");
                     }
 
                     System.out.println("Hours added to activity: " + activityName + " in project: " + projectID);
                     break;
 
                 case 5:
-                    System.out.println("Which project do you want to register hours to?");
+                    getAvailableProjects(scanner); // Generate a list of available projects if wanted
+                    System.out.println("What is the ID of the project you want to register hours to?");
                     try {
                         projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
                     }catch (Exception e){ // Catch any mistypes to avoid program exits.
@@ -205,19 +229,25 @@ public class GUI {
                     }
                     project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
 
+                    getAvailableWorkers(scanner); //Generate a list of available workers if wanted
                     System.out.println("You have selected project: " + projectID + "\nWhich worker do you wish to assign" +
                             " as project manager?: ");
                     workerName = scanner.nextLine();
+                    if(RegistrationApp.INSTANCE.getWorkerFromInitials(workerName) == null){ // Check if worker exists
+                        System.out.println("Worker not found, try again");
+                        break;
+                    }
                     worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
 
-                    project.assignManager(worker);
-                    worker.setProjectManager(true);
+                    project.assignManager(worker); // Assign as project manager in registration app
+                    worker.setProjectManager(true); // Mark the unique worker object as project manager
 
                     System.out.println("You have assigned " + workerName + " as project manager of project " + projectID);
                     break;
 
                 case 6:
-                    System.out.println("Which project do you want to rename?");
+                    getAvailableProjects(scanner); // Generate a list of available projects if wanted
+                    System.out.println("What is the ID of the project you want to rename?");
                     try {
                         projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
                     }catch (Exception e){ // Catch any mistypes to avoid program exits.
@@ -231,10 +261,42 @@ public class GUI {
                     project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
                     System.out.println("Current project name is: " + project.getName() + "\nInput new name: ");
                     projectName = scanner.nextLine();
-                    project.setName(projectName);
+                    project.setName(projectName); // Update the project with the new name
 
                     System.out.println("Project: " + projectID + " has been renamed to: " + projectName);
                     break;
+
+                case 7:
+                    getAvailableProjects(scanner); // Generate a list of available projects if wanted
+                    System.out.println("What is the ID of project containing the activity?");
+                    try {
+                        projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
+                    }catch (Exception e){ // Catch any mistypes to avoid program exits.
+                        System.out.println("Input is not an integer, try again");
+                        break;
+                    }
+                    if(RegistrationApp.INSTANCE.getProjectFromID(projectID) == null){ // Check if project exists
+                        System.out.println("Project not found, try again");
+                        break;
+                    }
+                    project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
+                    getAvailableActivities(scanner, projectID); //Generate a list of available activities if wanted
+                    System.out.println("Which activity do you want to rename?");
+                    activityName = scanner.nextLine();
+
+                    if(project.getActivityFromName(activityName) == null){ // Check if activity exists
+                        System.out.println("Activity not found, try again");
+                        break;
+                    }
+
+                    activity = project.getActivityFromName(activityName); // Get the activity object
+                    System.out.println("What is the new name of the activity?");
+                    String newActivityName = scanner.nextLine();
+                    activity.setActivityName(newActivityName); // Update activity with new name
+
+                    System.out.println("Activity: " + activityName + " has been renamed to: " + newActivityName);
+                    break;
+
                 case 9:
                     RegistrationApp.INSTANCE.addProject(new Project("Project 1"));
                     RegistrationApp.INSTANCE.addProject(new Project("Project 2"));
@@ -276,10 +338,50 @@ public class GUI {
     public static void addActivity(int projectID, Activity activity){
         try { // Check for activity overlap, or if activity already exists
             RegistrationApp.INSTANCE.getProjectFromID(projectID).addActivity(activity);
-            System.out.println("Activity added");
+            System.out.println("Activity: " + activity.getActivityName() + " added");
         } catch (OperationNotAllowedException e) {
-            System.out.println(e);
-            //errorMessage.setErrorMessage(e.getMessage());
+            System.out.println("Activity already exists! try again");
+        }
+    }
+
+    public static void getAvailableProjects(Scanner scanner){
+        // Function to output all available projects, defined in the instance of Registration App
+        String available;
+        List<Project> projects = new ArrayList<>();
+        System.out.println("Do you want a list of available projects? [y/n]");
+        available = scanner.nextLine();
+        if(available.equals("y")){
+            projects = RegistrationApp.INSTANCE.getProjects();
+            for(Project project1 : projects){
+                System.out.println(project1.getName() + " ID: " + project1.getID());
+            }
+        }
+    }
+    public static void getAvailableActivities(Scanner scanner, int projectID){
+        // Function to output all available activities, defined in the instance of Registration App
+        String available;
+        List<Activity> activities = new ArrayList<>();
+        System.out.println("Do you want a list of available activities? [y/n]");
+        available = scanner.nextLine();
+        if(available.equals("y")){
+            activities = RegistrationApp.INSTANCE.getProjectFromID(projectID).getActivities();
+            for(Activity activity1 : activities){
+                System.out.println("Name: " + activity1.getActivityName());
+            }
+        }
+    }
+
+    public static void getAvailableWorkers(Scanner scanner){
+        // Function to output all available workers, defined in the instance of Registration App
+        String available;
+        List<Worker> workers = new ArrayList<>();
+        System.out.println("Do you want a list of available workers? [y/n]");
+        available = scanner.nextLine();
+        if(available.equals("y")){
+            workers = RegistrationApp.INSTANCE.getWorkers();
+            for(Worker worker1 : workers){
+                System.out.println("Initials: " + worker1.getInitials());
+            }
         }
     }
 }
