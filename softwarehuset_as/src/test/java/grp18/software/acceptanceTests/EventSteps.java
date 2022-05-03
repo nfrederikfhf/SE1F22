@@ -79,17 +79,17 @@ public class EventSteps {
     @Then("the event with ID {int} of worker {string} has timeframe {string} to {string} and date {string}")
     public void the_event_with_id_of_worker_has_timeframe_to(int eventID, String workerInitials, String startTime, String endTime, String date) {
         StringToCalender dateData = new StringToCalender(date, startTime, endTime);
-        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getStartTime() == dateData.startTimeCal);
-        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getEndTime() == dateData.endTimeCal);
-        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getDate() == dateData.dateCal);
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getStartTime().getTimeInMillis() == dateData.startTimeCal.getTimeInMillis());
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getEndTime().getTimeInMillis()== dateData.endTimeCal.getTimeInMillis());
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getDate().getTimeInMillis() == dateData.dateCal.getTimeInMillis());
     }
 
-    @Then("The timeframe of the event with ID {int} is not changed and still has timeframe {string} to {string} and date {string}")
-    public void the_timeframe_of_the_event_with_id_is_not_changed(int eventID, String startTime, String endTime, String date) {
+    @Then("the worker {string} still has an event with ID {int} and timeframe {string} to {string} and date {string}")
+    public void the_timeframe_of_the_event_with_id_is_not_changed(String workerInitials, int eventID, String startTime, String endTime, String date) {
         StringToCalender dateData = new StringToCalender(date, startTime, endTime);
-        assertTrue(worker.getEventFromID(eventID).getStartTime() == dateData.startTimeCal);
-        assertTrue( worker.getEventFromID(eventID).getEndTime() == dateData.endTimeCal);
-        assertTrue(worker.getEventFromID(eventID).getDate() == dateData.dateCal);
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getStartTime().getTimeInMillis() == dateData.startTimeCal.getTimeInMillis());
+        assertTrue( RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getEndTime().getTimeInMillis() == dateData.endTimeCal.getTimeInMillis());
+        assertTrue(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getDate().getTimeInMillis() == dateData.dateCal.getTimeInMillis());
     }
 
 

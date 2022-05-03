@@ -20,7 +20,7 @@ public class Worker {
     private List<Project> managementList = new ArrayList<>();
     private Boolean projectManager = false;
 
-    public Worker(String initials){
+    public Worker(String initials) {
         this.initials = initials;
     }
 
@@ -32,15 +32,15 @@ public class Worker {
         return hoursWorked;
     }
 
-    public void setProjectManager(Boolean boolVal){
+    public void setProjectManager(Boolean boolVal) {
         projectManager = boolVal;
     }
 
-    public boolean getProjectManager(){
+    public boolean getProjectManager() {
         return projectManager;
     }
 
-    public void addManagedProject(int projectID){
+    public void addManagedProject(int projectID) {
         Project project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
         managementList.add(project);
     }
@@ -49,59 +49,85 @@ public class Worker {
         return activities.size();
     }
 
-    public void addActivity(Activity activity){
+    public void addActivity(Activity activity) {
         this.activities.add(activity);
     }
 
-    public Boolean validateNoEventOverlap(Event event){
-        List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(event.getDate())).collect(Collectors.toList());
-        for (Event e : sameDateEvents){
-            if ((e.getStartTime().getTimeInMillis()<event.getStartTime().getTimeInMillis()) || (e.getEndTime().getTimeInMillis()>event.getEndTime().getTimeInMillis()) ){
+    public Boolean validateNoEventOverlap(Event newEvent) {
+        List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(newEvent.getDate())).collect(Collectors.toList());
+
+        for (Event oldEvent : sameDateEvents) {
+            long oldstart = oldEvent.getStartTime().getTime().getTime();
+            long oldend = oldEvent.getEndTime().getTime().getTime();
+            long newstart = newEvent.getStartTime().getTime().getTime();
+            long newend = newEvent.getEndTime().getTime().getTime();
+
+            if (oldstart <= newstart && oldend >= newstart) {
                 return false;
             }
-            if ((e.getStartTime().getTimeInMillis()<event.getEndTime().getTimeInMillis()) || e.getEndTime().getTimeInMillis()>event.getEndTime().getTimeInMillis()){
+            if (oldstart <= newend && oldend >= newend) {
                 return false;
             }
+            if (oldstart <= newstart && oldend >= newend) {
+                return false;
+            }
+            if (oldstart >= newstart && oldend <= newend) {
+                return false;
+            }
+            /*
+            if ((oldEvent.getStartTime().getTimeInMillis()<newEvent.getStartTime().getTimeInMillis()) || (oldEvent.getEndTime().getTimeInMillis()>newEvent.getEndTime().getTimeInMillis()) ){
+                return false;
+            }
+            if ((oldEvent.getStartTime().getTimeInMillis()<newEvent.getEndTime().getTimeInMillis()) || oldEvent.getEndTime().getTimeInMillis()>newEvent.getEndTime().getTimeInMillis()){
+                return false;
+            }
+            */
+
         }
         return true;
     }
 
-    public void registerHours(GregorianCalendar startTime, GregorianCalendar endTime, GregorianCalendar date, Activity relatedActivity) throws EventOverlapException{
-        int ID = events.size()+1; //ID 0 reserved for dummy ID in editEvent
+    public void registerHours(GregorianCalendar startTime, GregorianCalendar endTime, GregorianCalendar date, Activity relatedActivity) throws EventOverlapException {
+        int ID = events.size() + 1; //ID 0 reserved for dummy ID in editEvent
         Event event = new Event(startTime, endTime, date, relatedActivity, ID);
-        if (!validateNoEventOverlap(event)){
+        if (!validateNoEventOverlap(event)) {
             throw new EventOverlapException("Event is overlapping another event");
         }
         events.add(event);
     }
 
-    public Event getEventFromID(int ID){
-        return this.events.stream().filter(x -> x.getID()==ID).findFirst().orElse(null);
+    public Event getEventFromID(int ID) {
+        return this.events.stream().filter(x -> x.getID() == ID).findFirst().orElse(null);
     }
 
-    public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException{
+    public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException {
 
-        StringToCalender dateData = new StringToCalender(newDate, newStartTime, newEndTime);
-        StringToCalender dateDataActivity = new StringToCalender("2222,02,02", "0,0", "0,0");
-        Activity dummyActivity = new Activity("dummyActivity", dateDataActivity.startTimeCal, dateDataActivity.endTimeCal);
-        Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, dummyActivity, 0);
-        if (!validateNoEventOverlap(dummyEvent)){
+        StringToCalender newDateData = new StringToCalender(newDate, newStartTime, newEndTime);
+        //StringToCalender dateDataActivity = new StringToCalender("2222,02,02", "0,0", "0,0");
+        //Activity dummyActivity = new Activity("dummyActivity", dateDataActivity.startTimeCal, dateDataActivity.endTimeCal);
+        //Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, dummyActivity, 0);
+        Event oldEvent = getEventFromID(eventID);
+        events.remove(oldEvent);
+        Event newEvent = new Event(newDateData.startTimeCal, newDateData.endTimeCal, newDateData.dateCal, null, 0);
+        if (!validateNoEventOverlap(newEvent)) {
+            events.add(oldEvent);
             throw new EventOverlapException("Event is overlapping another event");
         }
-        getEventFromID(eventID).setStartTime(dateData.startTimeCal);
-        getEventFromID(eventID).setEndTime(dateData.endTimeCal);
-        getEventFromID(eventID).setDate(dateData.dateCal);
+        oldEvent.setStartTime(newDateData.startTimeCal);
+        oldEvent.setEndTime(newDateData.endTimeCal);
+        oldEvent.setDate(newDateData.dateCal);
+        events.add(oldEvent);
     }
 
-    public List<Event> getEvents(){
+    public List<Event> getEvents() {
         return this.events;
     }
 
-    public int getHoursWorkedOnActivity(Activity activity){
+    public int getHoursWorkedOnActivity(Activity activity) {
 
         List<Event> events = this.getEvents(); //1
 
-        Stream<Event> eventsRelatedToActivity= events.stream().filter(x -> x.getRelatedActivity() == activity); //2
+        Stream<Event> eventsRelatedToActivity = events.stream().filter(x -> x.getRelatedActivity() == activity); //2
 
         Stream<Long> hoursInEventRelatedToActivity = eventsRelatedToActivity.map(Event::getHoursWorked); //3
 
