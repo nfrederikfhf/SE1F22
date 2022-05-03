@@ -191,6 +191,31 @@ public class GUI {
                     System.out.println("Hours added to activity: " + activityName + " in project: " + projectID);
                     break;
 
+                case 5:
+                    System.out.println("Which project do you want to register hours to?");
+                    try {
+                        projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
+                    }catch (Exception e){ // Catch any mistypes to avoid program exits.
+                        System.out.println("Input is not an integer, try again");
+                        break;
+                    }
+                    if(RegistrationApp.INSTANCE.getProjectFromID(projectID) == null){ // Check if project exists
+                        System.out.println("Project not found, try again");
+                        break;
+                    }
+                    project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
+
+                    System.out.println("You have selected project: " + projectID + "\nWhich worker do you wish to assign" +
+                            " as project manager?: ");
+                    workerName = scanner.nextLine();
+                    worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
+
+                    project.assignManager(worker);
+                    worker.setProjectManager(true);
+
+                    System.out.println("You have assigned " + workerName + " as project manager of project " + projectID);
+                    break;
+
                 case 6:
                     System.out.println("Which project do you want to rename?");
                     try {
