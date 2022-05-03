@@ -1,5 +1,7 @@
 package grp18.software.domain;
 
+import com.sun.source.tree.BreakTree;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -7,14 +9,14 @@ public class Event {
     private GregorianCalendar startTime;
     private GregorianCalendar endTime;
     private GregorianCalendar date;
-    private int hoursWorked;
+    private Long hoursWorked;
     private Activity relatedActivity;
     private int ID;
 
     public Event(GregorianCalendar startTime, GregorianCalendar endTime, GregorianCalendar date, Activity relatedActivity, int ID){
         this.startTime = startTime;
         this.endTime = endTime;
-        //this.hoursWorked =
+        this.hoursWorked = (endTime.getTimeInMillis() - startTime.getTimeInMillis()) / 3600000;
         this.relatedActivity = relatedActivity;
         this.date = date;
         this.ID = ID;
@@ -34,6 +36,10 @@ public class Event {
 
     public GregorianCalendar getDate(){
         return this.date;
+    }
+
+    public long getHoursWorked(){
+        return this.hoursWorked;
     }
 
     public void setStartTime(GregorianCalendar startTime){

@@ -35,4 +35,21 @@ public class RegistrationApp extends Observable{
     public Worker getWorkerFromInitials(String initials) {
         return workers.stream().filter(x -> x.getInitials().equals(initials)).findFirst().orElse(null);
     }
+
+    public void printStatusReport(){
+        System.out.println("Status report:");
+        for (Project project : projects){
+            String prefix = "";
+
+            Boolean isLast = project == projects.get(projects.size() - 1);
+
+            if (isLast){
+                prefix = "   ";
+            }else{
+                prefix = "|  ";
+            }
+
+            project.printStatusReport(prefix);
+        }
+    }
 }

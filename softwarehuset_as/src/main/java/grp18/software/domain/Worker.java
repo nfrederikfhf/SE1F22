@@ -10,6 +10,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Worker {
     private String initials;
@@ -94,5 +95,18 @@ public class Worker {
 
     public List<Event> getEvents(){
         return this.events;
+    }
+
+    public int getHoursWorkedOnActivity(Activity activity){
+
+        List<Event> events = this.getEvents(); //1
+
+        Stream<Event> eventsRelatedToActivity= events.stream().filter(x -> x.getRelatedActivity() == activity); //2
+
+        Stream<Long> hoursInEventRelatedToActivity = eventsRelatedToActivity.map(Event::getHoursWorked); //3
+
+        int totalHoursRelatedToActivity = hoursInEventRelatedToActivity.mapToInt(Long::intValue).sum(); //4
+
+        return totalHoursRelatedToActivity;
     }
 }

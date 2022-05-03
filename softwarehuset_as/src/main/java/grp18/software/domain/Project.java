@@ -85,4 +85,22 @@ public class Project{
         this.workers.add(worker);
     }
 
+    public void printStatusReport(String prefix){
+        String p = "";
+
+        System.out.println("|__"+this.name+":");
+        for (Activity activity : activities){
+
+            Boolean isLast = activity == activities.get(activities.size() - 1);
+
+            if (isLast){
+                p = prefix +"   ";
+            }else{
+                p = prefix +"|  ";
+            }
+
+            activity.printStatusReport(p);
+        }
+    }
+
 }

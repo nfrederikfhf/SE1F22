@@ -6,6 +6,8 @@ import grp18.software.app.*;
 import grp18.software.domain.*;
 import grp18.software.dto.*;
 import grp18.software.tools.*;
+
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -50,7 +52,7 @@ public class GUI {
 
         System.out.println("Welcome to the project planner for Softwarehuset A/S");
         while(run){
-            System.out.print("Following operations are available: \n 1: Create project \n 2: Add activity \n 3: Add worker \n 4: Register time \n 5: Assign project manager \n 6: Rename project \n 7: Rename activity \n 8: Edit registered time \n 0: Exit \n");
+            System.out.print("Following operations are available: \n 1: Create project \n 2: Add activity \n 3: Add worker \n 4: Register time \n 5: Assign project manager \n 6: Rename project \n 7: Rename activity \n 8: Edit registered time \n 9: Get status\n 0: Exit \n");
 
             selection = Integer.parseInt(scanner.next() + scanner.nextLine()); // Read selection from terminal input
 
@@ -207,6 +209,39 @@ public class GUI {
                     project.setName(projectName);
 
                     System.out.println("Project: " + projectID + " has been renamed to: " + projectName);
+                    break;
+                case 9:
+                    RegistrationApp.INSTANCE.addProject(new Project("Project 1"));
+                    RegistrationApp.INSTANCE.addProject(new Project("Project 2"));
+                    RegistrationApp.INSTANCE.addProject(new Project("Project 3"));
+
+                    for (int i = 0; i< 3; i++){
+                        try{
+                            RegistrationApp.INSTANCE.getProjectFromID(22001).addActivity(new Activity("Activity "+ (i+1),null,null));
+                            RegistrationApp.INSTANCE.getProjectFromID(22002).addActivity(new Activity("Activity "+ (i+1),null,null));
+                            RegistrationApp.INSTANCE.getProjectFromID(22003).addActivity(new Activity("Activity "+ (i+1),null,null));
+
+                        }catch(OperationNotAllowedException e){
+                            System.out.println("hov");
+                        }
+
+                    }
+                    List<Worker> workers = RegistrationApp.INSTANCE.getWorkers();
+                    for (Worker workeren : workers.subList(0,3)){
+                        RegistrationApp.INSTANCE.getProjectFromID(22001).getActivityFromName("Activity 1").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22001).getActivityFromName("Activity 2").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22001).getActivityFromName("Activity 3").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 1").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 2").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 3").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 1").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 2").addWorker(workeren);
+                        RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 3").addWorker(workeren);
+                    }
+
+                    RegistrationApp.INSTANCE.printStatusReport();
+                    //RegistrationApp.INSTANCE.getProjectFromID(22002).printStatusReport("   ");
+                    //RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 1").printStatusReport("   ");
                     break;
             }
 
