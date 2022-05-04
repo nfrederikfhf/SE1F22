@@ -3,8 +3,6 @@ package grp18.software.domain;
 import grp18.software.app.ActivityNotFoundException;
 import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
-import grp18.software.app.TooManyActivitiesException;
-import grp18.software.domain.Worker;
 import grp18.software.tools.StringToCalender;
 
 import java.util.ArrayList;
@@ -55,24 +53,13 @@ public class Project{
         return this.ID;
     }
 
-    public void setManager(Worker worker){
-        projectManager = worker;
-    }
-
     public Activity getActivityFromName(String name){
         return this.activities.stream().filter(x -> Objects.equals(x.getActivityName(), name)).findFirst().orElse(null);
     }
 
-    public Activity checkActivityOverlap(String name) throws ActivityNotFoundException {
-        if(getActivityFromName(name) == null){
-            throw new ActivityNotFoundException("Activity not found");
-        }
-        return getActivityFromName(name);
-    }
-
     public Activity checkActivityName(String name) throws ActivityNotFoundException {
         if(getActivityFromName(name) == null) {
-            throw new ActivityNotFoundException("No activity with that name is found, and is unable to be edited");
+            throw new ActivityNotFoundException("Activity not found");
         }
         return getActivityFromName(name);
     }
@@ -113,9 +100,9 @@ public class Project{
         if (this.projectManager != null) {
             stringBuilder.append("|  PM: " + this.projectManager.getInitials()+"\n");
         }
-        for (Activity activity : activities){
+        for (Activity activity : this.getActivities()){
 
-            Boolean isLast = activity == activities.get(activities.size() - 1);
+            Boolean isLast = activity == this.getActivities().get(this.getActivities().size() - 1);
 
             if (isLast){
                 p = prefix +"   ";

@@ -9,7 +9,6 @@ public class RegistrationApp extends Observable{
 
     private List<Worker> workers = new ArrayList<>();
     private List<Project> projects = new ArrayList<>();
-    private DateServer dateServer = new DateServer();
     public static final RegistrationApp INSTANCE = new RegistrationApp();
 
 

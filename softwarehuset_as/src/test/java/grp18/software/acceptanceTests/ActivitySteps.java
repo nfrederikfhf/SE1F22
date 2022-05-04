@@ -46,7 +46,7 @@ public class ActivitySteps {
     @When("the activity with name {string} is not contained in project {int}'s list of activities")
     public void the_activity_with_name_is_not_contained_in_project_s_list_of_activities(String activityName, int projectID) {
         try {
-            RApp.getProjectFromID(projectID).checkActivityOverlap(activityName);
+            RApp.getProjectFromID(projectID).checkActivityName(activityName);
         } catch (ActivityNotFoundException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -55,7 +55,7 @@ public class ActivitySteps {
     @Given("the project with number {int} does not have an activity with name {string}")
     public void the_project_does_not_have_an_activity_with_name(int projectNumber,String activityName) {
         try {
-            RApp.getProjectFromID(projectNumber).checkActivityOverlap(activityName);
+            RApp.getProjectFromID(projectNumber).checkActivityName(activityName);
         } catch (ActivityNotFoundException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
