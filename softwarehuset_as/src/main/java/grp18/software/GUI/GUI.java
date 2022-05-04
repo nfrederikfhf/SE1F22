@@ -4,7 +4,6 @@
 package grp18.software.GUI;
 import grp18.software.app.*;
 import grp18.software.domain.*;
-import grp18.software.dto.*;
 import grp18.software.tools.*;
 
 import java.util.ArrayList;
@@ -68,17 +67,19 @@ public class GUI {
                     try { // To avoid exit of program due to wrong input type
                         System.out.println("Input project start date, as 'year,month,day': ");
                         startDate = scanner.nextLine();
-                        startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+                        //startDatedata = new StringToCalender(startDate,"0,0", "0,0");
 
                         System.out.println("Input project end date, as 'year,month,day': ");
                         endDate = scanner.nextLine();
-                        endDatedata = new StringToCalender(endDate,"0,0", "0,0");
+                        //endDatedata = new StringToCalender(endDate,"0,0", "0,0");
+
                     }catch(Exception e){ // Catch any input errors
                         System.out.println("Input is not correct try again");
                         break;
                     }
 
-                    project = new Project(projectName,startDatedata.dateCal,endDatedata.dateCal);
+                    //project = new Project(projectName,startDatedata.dateCal,endDatedata.dateCal);
+                    project = new Project(projectName,startDate,endDate);
                     RegistrationApp.INSTANCE.addProject(project); // Add the project, to this instance of Registration app
 
                     System.out.println("Project created with ID: " + project.getID());
@@ -104,17 +105,18 @@ public class GUI {
                     try { // To avoid exit of program due to wrong input type
                         System.out.println("Input activity start date, as 'year,month,day': ");
                         startDate = scanner.nextLine();
-                        startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+                        //startDatedata = new StringToCalender(startDate,"0,0", "0,0");
 
                         System.out.println("Input activity end date, as 'year,month,day': ");
                         endDate = scanner.nextLine();
-                        endDatedata = new StringToCalender(endDate,"0,0", "0,0");
+                        //endDatedata = new StringToCalender(endDate,"0,0", "0,0");
                     }catch(Exception e){
                         System.out.println("Input is not correct try again");
                         break;
                     }
                     // Create and add the activity
-                    activity = new Activity(activityName, startDatedata.dateCal,endDatedata.dateCal);
+                    //activity = new Activity(activityName, startDatedata.dateCal,endDatedata.dateCal);
+                    activity = new Activity(activityName, startDate,endDate);
                     addActivity(projectID, activity); // Add an activity
                     break;
 

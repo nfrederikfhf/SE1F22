@@ -5,6 +5,7 @@ import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.app.TooManyActivitiesException;
 import grp18.software.domain.Worker;
+import grp18.software.tools.StringToCalender;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,14 +23,16 @@ public class Project{
     private RegistrationApp RApp;
 
     public Project(String name){
-        this(name,null,null);
+        this(name,"0,0,0","0,0,0");
     }
 
-    public Project(String name, Calendar startDate, Calendar endDate){
+    public Project(String name, String startDate, String endDate){
             this.name = name;
             this.ID = 0;
-            this.startDate = startDate;
-            this.endDate = endDate;
+            StringToCalender startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+            StringToCalender endDatedata = new StringToCalender(endDate,"0,0", "0,0");
+            this.startDate = startDatedata.dateCal;
+            this.endDate = endDatedata.dateCal;
         }
 
     public void assignManager(Worker projectManager){
