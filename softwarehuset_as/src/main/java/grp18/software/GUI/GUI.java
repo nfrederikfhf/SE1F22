@@ -326,9 +326,9 @@ public class GUI {
                         RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 3").addWorker(workeren);
                     }
 
-                    RegistrationApp.INSTANCE.printStatusReport();
-                    //RegistrationApp.INSTANCE.getProjectFromID(22002).printStatusReport("   ");
-                    //RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 1").printStatusReport("   ");
+                    //RegistrationApp.INSTANCE.getStatusReport();
+                    //RegistrationApp.INSTANCE.getProjectFromID(22002).getStatusReport("   ");
+                    //RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 1").getStatusReport("   ");
                     break;
             }
 

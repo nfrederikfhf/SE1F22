@@ -36,25 +36,23 @@ public class Activity {
         return this.workers;
     }
 
-    public void printStatusReport(String prefix){
+    public void getStatusReport(String prefix, StringBuilder stringBuilder){
 
-
-        System.out.println(prefix.substring(0,prefix.length()-3)+"|__" +this.activityName+":");
+        stringBuilder.append(prefix.substring(0,prefix.length()-3)+"|__" +this.activityName+":\n");
         int i = 0;
-        for (Worker worker : workers){
-            System.out.println(prefix+"|__"+worker.getInitials());
+        for (Worker worker : workers) {
+            stringBuilder.append(prefix + "|__" + worker.getInitials()+"\n");
 
             int hours = worker.getHoursWorkedOnActivity(this);
 
-            if(i++ == workers.size() - 1){
-                System.out.println(prefix +"   |__Hours worked: "+ hours );
-                System.out.println(prefix);
-            }else {
-                System.out.println(prefix + "|  |__Hours worked: " + hours);
-                System.out.println(prefix +"|" );
+            if (i++ == workers.size() - 1) {
+                stringBuilder.append(prefix + "   |__Hours worked: " + hours+"\n");
+                //stringBuilder.append(prefix+"\n");
+            } else {
+                stringBuilder.append(prefix + "|  |__Hours worked: " + hours+"\n");
+                //stringBuilder.append(prefix + "|"+"\n");
             }
 
         }
-        //System.out.println(prefix);
     }
 }

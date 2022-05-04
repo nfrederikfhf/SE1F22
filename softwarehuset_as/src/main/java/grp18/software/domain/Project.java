@@ -100,10 +100,13 @@ public class Project{
         this.workers.add(worker);
     }
 
-    public void printStatusReport(String prefix){
+    public void getStatusReport(String prefix, StringBuilder stringBuilder){
         String p = "";
 
-        System.out.println("|__"+this.name+":");
+        stringBuilder.append("|__"+this.name+":\n");
+        if (this.projectManager != null) {
+            stringBuilder.append("|  PM: " + this.projectManager.getInitials()+"\n");
+        }
         for (Activity activity : activities){
 
             Boolean isLast = activity == activities.get(activities.size() - 1);
@@ -114,7 +117,7 @@ public class Project{
                 p = prefix +"|  ";
             }
 
-            activity.printStatusReport(p);
+            activity.getStatusReport(p,stringBuilder);
         }
     }
 

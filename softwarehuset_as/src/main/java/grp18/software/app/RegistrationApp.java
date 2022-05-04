@@ -36,10 +36,10 @@ public class RegistrationApp extends Observable{
         return workers.stream().filter(x -> x.getInitials().equals(initials)).findFirst().orElse(null);
     }
 
-    public void printStatusReport(){
-        System.out.println("Status report:");
+    public void getStatusReport(StringBuilder stringBuilder){
+        stringBuilder.append("Status report:\n");
         for (Project project : projects){
-            String prefix = "";
+            String prefix;
 
             Boolean isLast = project == projects.get(projects.size() - 1);
 
@@ -49,7 +49,7 @@ public class RegistrationApp extends Observable{
                 prefix = "|  ";
             }
 
-            project.printStatusReport(prefix);
+            project.getStatusReport(prefix, stringBuilder);
         }
     }
 }
