@@ -117,7 +117,6 @@ public class Worker {
 
     public int getHoursWorkedOnActivity(Activity activity) {
 
-
         int sum = 0;
         for (Event event : this.getEvents()){           //1
             if(event.getRelatedActivity()==activity){   //2
