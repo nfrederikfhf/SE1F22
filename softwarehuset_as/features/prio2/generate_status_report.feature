@@ -2,7 +2,7 @@
 Feature: A status report is generated
     Description: The project manager generates a status report.
     Actor: Project manager
-Background: The library has a set of books
+Background: A system with workers, projects and activities exists
     Given a project with number 22001 and name "Project 1" exists
     And a project with number 22002 and name "Project 2" exists
     And an activity with name "Activity 1" is contained in project 22001's list of activities

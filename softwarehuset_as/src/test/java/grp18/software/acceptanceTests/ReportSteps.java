@@ -42,6 +42,7 @@ public class ReportSteps {
         RApp.getStatusReport(stringBuilder);
         String[] report = stringBuilder.toString().split("\\n");
         int i = 0;
+
         for (String line : report){
 
            assertTrue(line.contains(content.get(i)));
