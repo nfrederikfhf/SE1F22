@@ -116,14 +116,13 @@ public class Worker {
 
     public int getHoursWorkedOnActivity(Activity activity) {
 
-        List<Event> events = this.getEvents(); //1
 
-        Stream<Event> eventsRelatedToActivity = events.stream().filter(x -> x.getRelatedActivity() == activity); //2
-
-        Stream<Long> hoursInEventRelatedToActivity = eventsRelatedToActivity.map(Event::getHoursWorked); //3
-
-        int totalHoursRelatedToActivity = hoursInEventRelatedToActivity.mapToInt(Long::intValue).sum(); //4
-
-        return totalHoursRelatedToActivity;
+        int sum = 0;
+        for (Event event : this.getEvents()){           //1
+            if(event.getRelatedActivity()==activity){   //2
+                sum += event.getHoursWorked();
+            }
+        }
+        return sum;
     }
 }
