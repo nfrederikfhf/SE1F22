@@ -56,31 +56,32 @@ public class Worker {
     public Boolean validateNoEventOverlap(Event newEvent) {
         List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(newEvent.getDate())).collect(Collectors.toList());
 
-        for (Event oldEvent : sameDateEvents) {
+        for (Event oldEvent : sameDateEvents) {                             //1
             long oldstart = oldEvent.getStartTime().getTime().getTime();
             long oldend = oldEvent.getEndTime().getTime().getTime();
             long newstart = newEvent.getStartTime().getTime().getTime();
             long newend = newEvent.getEndTime().getTime().getTime();
 
-            if (oldstart <= newstart && oldend >= newstart) {
+            if (oldstart <= newstart && oldend >= newstart) {               //2
                 return false;
             }
-            if (oldstart <= newend && oldend >= newend) {
+            if (oldstart <= newend && oldend >= newend) {                   //3
                 return false;
             }
-            if (oldstart <= newstart && oldend >= newend) {
+            if (oldstart <= newstart && oldend >= newend) {                 //4
                 return false;
             }
-            if (oldstart >= newstart && oldend <= newend) {
+            if (oldstart >= newstart && oldend <= newend) {                 //5
                 return false;
             }
         }
         return true;
     }
 
-    public void registerHours(GregorianCalendar startTime, GregorianCalendar endTime, GregorianCalendar date, Activity relatedActivity) throws EventOverlapException {
+    public void registerHours(String startTime, String endTime, String date, Activity relatedActivity) throws EventOverlapException {
+        StringToCalender dateData = new StringToCalender(date, startTime, endTime);
         int ID = events.size() + 1; //ID 0 reserved for dummy ID in editEvent
-        Event event = new Event(startTime, endTime, date, relatedActivity, ID);
+        Event event = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, relatedActivity, ID);
         if (!validateNoEventOverlap(event)) {
             throw new EventOverlapException("Event is overlapping another event");
         }

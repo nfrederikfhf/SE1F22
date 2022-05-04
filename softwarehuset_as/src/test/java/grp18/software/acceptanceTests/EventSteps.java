@@ -37,7 +37,7 @@ public class EventSteps {
         Activity activity1 = RApp.getProjectFromID(projectID).getActivityFromName(activityName);
         event1 = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
         try {
-            RApp.getWorkerFromInitials(workerInitials).registerHours(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1);
+            RApp.getWorkerFromInitials(workerInitials).registerHours(startTime, endTime, date, activity1);
         } catch (EventOverlapException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -51,10 +51,9 @@ public class EventSteps {
 
     @Given("the worker {string} has an event from {string} to {string} on date {string} with ID {int} related to activity with name {string} in project with ID {int}")
     public void the_worker_has_an_event_from_to_on_date_with_id(String workerInitials, String startTime, String endTime, String date, int eventID, String activityName, int projectID) {
-        StringToCalender dateData = new StringToCalender(date, startTime, endTime);
         Activity activity1 = RApp.getProjectFromID(projectID).getActivityFromName(activityName);
         try {
-            RApp.getWorkerFromInitials(workerInitials).registerHours(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1);
+            RApp.getWorkerFromInitials(workerInitials).registerHours(startTime, endTime, date, activity1);
         } catch (EventOverlapException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }

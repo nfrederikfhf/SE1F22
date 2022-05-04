@@ -4,7 +4,6 @@
 package grp18.software.GUI;
 import grp18.software.app.*;
 import grp18.software.domain.*;
-import grp18.software.dto.*;
 import grp18.software.tools.*;
 
 import java.util.ArrayList;
@@ -200,13 +199,12 @@ public class GUI {
                         System.out.println("Input end time as 'hour,minutes': ");
                         endTime = scanner.nextLine();
 
-                        startDatedata = new StringToCalender(date, startTime, endTime);
                     }catch(Exception e){
                         System.out.println("Input is not correct try again");
                     }
 
                     try { // Check for overlap between time registered
-                        worker.registerHours(startDatedata.startTimeCal, startDatedata.endTimeCal, startDatedata.dateCal, activity);
+                        worker.registerHours(startTime, endTime, date, activity);
                     } catch (EventOverlapException e) {
                         System.out.println("Time already registered in this timeframe");
                     }
