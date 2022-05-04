@@ -64,20 +64,13 @@ public class GUI {
                     System.out.println("Input project name: ");
                     projectName = scanner.nextLine();
 
-                    try { // To avoid exit of program due to wrong input type
-                        System.out.println("Input project start date, as 'year,month,day': ");
-                        startDate = scanner.nextLine();
-                        //startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+                    System.out.println("Input project start date, as 'year,month,day': ");
+                    startDate = scanner.nextLine();
+                    //startDatedata = new StringToCalender(startDate,"0,0", "0,0");
 
-                        System.out.println("Input project end date, as 'year,month,day': ");
-                        endDate = scanner.nextLine();
-                        //endDatedata = new StringToCalender(endDate,"0,0", "0,0");
-
-                    }catch(Exception e){ // Catch any input errors
-                        System.out.println("Input is not correct try again");
-                        break;
-                    }
-
+                    System.out.println("Input project end date, as 'year,month,day': ");
+                    endDate = scanner.nextLine();
+                    //endDatedata = new StringToCalender(endDate,"0
                     //project = new Project(projectName,startDatedata.dateCal,endDatedata.dateCal);
                     project = new Project(projectName,startDate,endDate);
                     RegistrationApp.INSTANCE.addProject(project); // Add the project, to this instance of Registration app
@@ -102,18 +95,12 @@ public class GUI {
                     System.out.println("You have selected project: " + projectID + "\nInput activity name: ");
                     activityName = scanner.nextLine();
 
-                    try { // To avoid exit of program due to wrong input type
-                        System.out.println("Input activity start date, as 'year,month,day': ");
-                        startDate = scanner.nextLine();
-                        //startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+                    System.out.println("Input activity start date, as 'year,month,day': ");
+                    startDate = scanner.nextLine();
 
-                        System.out.println("Input activity end date, as 'year,month,day': ");
-                        endDate = scanner.nextLine();
-                        //endDatedata = new StringToCalender(endDate,"0,0", "0,0");
-                    }catch(Exception e){
-                        System.out.println("Input is not correct try again");
-                        break;
-                    }
+                    System.out.println("Input activity end date, as 'year,month,day': ");
+                    endDate = scanner.nextLine();
+
                     // Create and add the activity
                     //activity = new Activity(activityName, startDatedata.dateCal,endDatedata.dateCal);
                     activity = new Activity(activityName, startDate,endDate);
@@ -194,17 +181,12 @@ public class GUI {
                     }
                     worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
 
-                    try { // To catch wrong input of the calender type
-                        System.out.println("Input date: ");
-                        date = scanner.nextLine();
-                        System.out.println("Input start time as 'hour,minutes': ");
-                        startTime = scanner.nextLine();
-                        System.out.println("Input end time as 'hour,minutes': ");
-                        endTime = scanner.nextLine();
-
-                    }catch(Exception e){
-                        System.out.println("Input is not correct try again");
-                    }
+                    System.out.println("Input date: ");
+                    date = scanner.nextLine();
+                    System.out.println("Input start time as 'hour,minutes': ");
+                    startTime = scanner.nextLine();
+                    System.out.println("Input end time as 'hour,minutes': ");
+                    endTime = scanner.nextLine();
 
                     try { // Check for overlap between time registered
                         worker.registerHours(startTime, endTime, date, activity);
