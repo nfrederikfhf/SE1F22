@@ -88,8 +88,8 @@ public class Project{
         if (activity.getWorkers().contains(worker)){
             throw new OperationNotAllowedException("Worker Already exists in database");
         }
-        if(!workers.contains(worker)){
-            throw new OperationNotAllowedException("Worker not found in database");
+        if(worker == null){
+            throw new OperationNotAllowedException("The worker is invalid");
         }
         worker.addActivity(activity);
         activity.addWorker(worker);

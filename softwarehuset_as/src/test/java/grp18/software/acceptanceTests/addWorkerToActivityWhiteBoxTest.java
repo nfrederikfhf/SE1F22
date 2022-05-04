@@ -20,7 +20,7 @@ class addWorkerToActivityWhiteBoxTest {
     private Project project1 = new Project("Project1");
     private Worker worker1 = new Worker("WO");
     private Worker worker2 = new Worker("WT");
-    private Worker worker3 = new Worker("WTH");
+    private Worker worker3 = null;
     private Worker worker4 = new Worker("WF");
     private ErrorMessageHolder errorMessage;
     private RegistrationApp RApp;
@@ -83,12 +83,15 @@ class addWorkerToActivityWhiteBoxTest {
     @DisplayName("Case C")
     public void addWorkertoActivityWhiteBoxTestTestCaseC(){
         // Check if a non existant worker in the project can be added
+        // this would be as an assistant
         try {
             project1.addWorkerToActivity(worker3, activity1);
         } catch (OperationNotAllowedException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
-        Assertions.assertEquals("Worker not found in database", errorMessage.getErrorMessage());
+
+        Assertions.assertEquals("The worker is invalid",errorMessage.getErrorMessage());
+        Assertions.assertEquals(0,activity1.getWorkers().size());
     }
 
     @Test
