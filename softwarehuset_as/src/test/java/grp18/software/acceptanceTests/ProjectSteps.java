@@ -50,9 +50,7 @@ public class ProjectSteps {
     @When("the project manager of project {int} adds an activity with name {string} with timeframe {string} to {string} to project {int}")
     public void the_project_manager_of_project_adds_an_activity_with_name_to_project(int projectNumber, String activityName, String startDate, String endDate, int projectNumber2) {
         // activity eller activity name som arg?
-        StringToCalender startDatedata = new StringToCalender(startDate,"0,0", "0,0");
-        StringToCalender endDatedata = new StringToCalender( endDate,"0,0", "0,0");
-        Activity activity = new Activity(activityName, startDatedata.dateCal, endDatedata.dateCal);
+        Activity activity = new Activity(activityName, startDate, endDate);
         try {
             RApp.getProjectFromID(projectNumber2).addActivity(activity);
         } catch (OperationNotAllowedException e) {
@@ -70,9 +68,7 @@ public class ProjectSteps {
 
     @Given("an activity with name {string} is contained in project {int}'s list of activities")
     public void given_the_activity_with_name_is_contained_in_project_s_list_of_activities(String activityName, int projectNumber) {
-        StringToCalender startDatedata = new StringToCalender("0,0,0", "0,0,0", "2,2,2022");
-        StringToCalender endDatedata = new StringToCalender("0,0,0", "0,0,0", "2,3,2022");
-        Activity activity = new Activity(activityName, startDatedata.dateCal, endDatedata.dateCal);
+        Activity activity = new Activity(activityName, "2,2,2022", "2,3,2022");
         try {
             RApp.getProjectFromID(projectNumber).addActivity(activity);
         } catch (OperationNotAllowedException e) {

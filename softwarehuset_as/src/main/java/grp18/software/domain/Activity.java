@@ -1,6 +1,7 @@
 package grp18.software.domain;
 
 import grp18.software.app.OperationNotAllowedException;
+import grp18.software.tools.StringToCalender;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,10 +15,13 @@ public class Activity {
     private Calendar endDate;
     private List<Worker> workers = new ArrayList<>();
 
-    public Activity(String activityName, Calendar startDate, Calendar endDate){
+    public Activity(String activityName, String startDate, String endDate){
         this.activityName = activityName;
-        this.startDate = startDate;
-        this.endDate = endDate;
+
+        StringToCalender startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+        StringToCalender endDatedata = new StringToCalender(endDate,"0,0", "0,0");
+        this.startDate = startDatedata.dateCal;
+        this.endDate = endDatedata.dateCal;
     }
 
     public String getActivityName() {

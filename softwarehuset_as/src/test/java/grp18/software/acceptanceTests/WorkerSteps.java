@@ -31,11 +31,11 @@ public class WorkerSteps {
     @Given("the worker {string} is working on {int} activities")
     public void the_worker_is_working_on_activities(String initials, int activityCount) {
         // Checks count of current activites worked on
-        StringToCalender startDatedata = new StringToCalender("0,0,0", "0,0,0", "2,2,2022");
-        StringToCalender endDatedata = new StringToCalender("0,0,0", "0,0,0", "2,3,2022");
+        //StringToCalender startDatedata = new StringToCalender("0,0,0", "0,0,0", "2,2,2022");
+        //StringToCalender endDatedata = new StringToCalender("0,0,0", "0,0,0", "2,3,2022");
         for (int i = 0; i<activityCount; i++){
             RApp.getWorkerFromInitials(initials).addActivity(new Activity("DummyActivity"+i,
-                    startDatedata.dateCal,endDatedata.dateCal));
+                    "2,2,2022","2,3,2022"));
         }
     }
 
