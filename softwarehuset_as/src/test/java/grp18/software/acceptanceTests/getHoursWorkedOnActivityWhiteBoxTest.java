@@ -15,6 +15,8 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
     private Activity activity1 = new Activity("Activity 1","2022,06,01","2022,06,10");
     private Activity activity2 = new Activity("Activity 2","2022,06,01","2022,06,10");
 
+
+
     @Test
     @DisplayName("Case A")
     public void getHoursWorkedOnActivityWhiteBoxTestCaseA(){
