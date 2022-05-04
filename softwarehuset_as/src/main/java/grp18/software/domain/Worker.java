@@ -74,15 +74,6 @@ public class Worker {
             if (oldstart >= newstart && oldend <= newend) {
                 return false;
             }
-            /*
-            if ((oldEvent.getStartTime().getTimeInMillis()<newEvent.getStartTime().getTimeInMillis()) || (oldEvent.getEndTime().getTimeInMillis()>newEvent.getEndTime().getTimeInMillis()) ){
-                return false;
-            }
-            if ((oldEvent.getStartTime().getTimeInMillis()<newEvent.getEndTime().getTimeInMillis()) || oldEvent.getEndTime().getTimeInMillis()>newEvent.getEndTime().getTimeInMillis()){
-                return false;
-            }
-            */
-
         }
         return true;
     }
