@@ -23,7 +23,6 @@ public class Activity {
         } catch (IllegalDateException e){
             throw e;
         }
-
     }
 
     public String getActivityName() {

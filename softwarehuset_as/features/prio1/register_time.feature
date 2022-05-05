@@ -22,6 +22,14 @@ Scenario: A worker adds an event that overlaps with another events timeframe
     And the error message "Event is overlapping another event" is given
 
 
+Scenario: A worker registers time with incorrect timeformats
+    Given there exists a worker with initials "JHM" from system database
+    And a project with number 22001 and name "Project 1" exists
+    And an activity with name "Activity 1" is contained in project 22001's list of activities
+    Then the worker "JHM"'s eventlist is empty
+    When the worker "JHM" registers working hours from "8,00,00" to "19,00,30" on date "02,05" with ID 1 related to activity "Activity 1" of project 22001
+    Then the error message "Date is invalid" is given
+
 
 
   #Scenario: A worker adds an event that overlaps with another events timeframe\\
