@@ -55,9 +55,7 @@ public class Worker {
             if (oldstart <= newend && oldend >= newend) {                   //3
                 return false;
             }
-            if (oldstart <= newstart && oldend >= newend) {                 //4
-                return false;
-            }
+
             if (oldstart >= newstart && oldend <= newend) {                 //5
                 return false;
             }
