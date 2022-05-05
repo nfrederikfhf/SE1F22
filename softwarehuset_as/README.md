@@ -38,7 +38,7 @@ Entering:
 ```
 0
 ```
-when the selection menu, will always exit the GUI and program, thus losing the current
+when the selection menu is present, will always exit the GUI and program, thus losing the current
 instance of the program.
 
 Functionallity restrictions
