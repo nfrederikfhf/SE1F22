@@ -37,6 +37,7 @@ Input project start date, as 'year,month,day':
 ```
 ***It is extremly important that year is inputted as an integer, the same is valid for month
 and date***
+
 The following is an example of a valid date input:
 ```
 2022,01,01
