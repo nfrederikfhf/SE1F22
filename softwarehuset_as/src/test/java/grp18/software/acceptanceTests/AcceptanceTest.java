@@ -1,6 +1,7 @@
 package grp18.software.acceptanceTests;
 
 
+import org.junit.platform.runner.JUnitPlatform;
 import org.junit.runner.RunWith;
 
 import io.cucumber.junit.Cucumber;

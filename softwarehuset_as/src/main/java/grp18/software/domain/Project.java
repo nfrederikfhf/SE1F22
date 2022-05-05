@@ -60,24 +60,13 @@ public class Project{
         return this.ID;
     }
 
-    public void setManager(Worker worker){
-        projectManager = worker;
-    }
-
     public Activity getActivityFromName(String name){
         return this.activities.stream().filter(x -> Objects.equals(x.getActivityName(), name)).findFirst().orElse(null);
     }
 
-    public Activity checkActivityOverlap(String name) throws ActivityNotFoundException {
-        if(getActivityFromName(name) == null){
-            throw new ActivityNotFoundException("Activity not found");
-        }
-        return getActivityFromName(name);
-    }
-
     public Activity checkActivityName(String name) throws ActivityNotFoundException {
         if(getActivityFromName(name) == null) {
-            throw new ActivityNotFoundException("No activity with that name is found, and is unable to be edited");
+            throw new ActivityNotFoundException("Activity not found");
         }
         return getActivityFromName(name);
     }
@@ -92,6 +81,9 @@ public class Project{
     public void addWorkerToActivity(Worker worker, Activity activity) throws OperationNotAllowedException{
         if (activity.getWorkers().contains(worker)){
             throw new OperationNotAllowedException("Worker Already exists in database");
+        }
+        if(worker == null){
+            throw new OperationNotAllowedException("The worker is invalid");
         }
         worker.addActivity(activity);
         activity.addWorker(worker);
@@ -115,9 +107,9 @@ public class Project{
         if (this.projectManager != null) {
             stringBuilder.append("|  PM: " + this.projectManager.getInitials()+"\n");
         }
-        for (Activity activity : activities){
+        for (Activity activity : this.getActivities()){
 
-            Boolean isLast = activity == activities.get(activities.size() - 1);
+            Boolean isLast = activity == this.getActivities().get(this.getActivities().size() - 1);
 
             if (isLast){
                 p = prefix +"   ";

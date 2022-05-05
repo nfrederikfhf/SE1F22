@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 
 public class Worker {
     private String initials;
-    private int hoursWorked;
     private List<Activity> activities = new ArrayList<>();
     private List<Event> events = new ArrayList<>();
     private List<Project> managementList = new ArrayList<>();
@@ -25,21 +24,12 @@ public class Worker {
         return initials;
     }
 
-    public int getHoursWorked() {
-        return hoursWorked;
-    }
-
     public void setProjectManager(Boolean boolVal) {
         projectManager = boolVal;
     }
 
     public boolean getProjectManager() {
         return projectManager;
-    }
-
-    public void addManagedProject(int projectID) {
-        Project project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
-        managementList.add(project);
     }
 
     public int getAmountOfActivities() {
