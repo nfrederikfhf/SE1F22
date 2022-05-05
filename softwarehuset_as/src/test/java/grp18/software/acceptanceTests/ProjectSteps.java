@@ -1,5 +1,6 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.app.IllegalDateException;
 import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Activity;
@@ -7,9 +8,6 @@ import grp18.software.domain.Project;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import grp18.software.tools.StringToCalender;
-
-import javax.crypto.spec.OAEPParameterSpec;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -24,9 +22,19 @@ public class ProjectSteps {
         this.errorMessage = errorMessage;
     }
     @When("a project with name {string} is created in the system")
-    public void a_project_with_name_is_created(String projectName) {
+    public void a_project_with_name_is_created(String projectName) throws IllegalDateException{
         project = new Project(projectName);
         RApp.addProject(project);
+    }
+
+    @When("a project with name {string} from date {string} to {string} is created in the system")
+    public void a_project_with_name_from_date_to_is_created_in_the_system(String projectName, String date1, String date2) {
+        try {
+            project = new Project(projectName,date1,date2);
+            RApp.addProject(project);
+        }catch (IllegalDateException e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("a project with name {string} and ID {int} exists in the system")
@@ -41,23 +49,26 @@ public class ProjectSteps {
 
 
     @Given("a project with number {int} and name {string} exists")
-    public void a_project_with_number_and_name_exists(int projectNumber, String projectName) throws Exception {
+    public void a_project_with_number_and_name_exists(int projectNumber, String projectName) throws IllegalDateException {
         project = new Project(projectName);
         RApp.addProject(project);
-        assertEquals(project.getID(), projectNumber);
+
     }
 
     @When("the project manager of project {int} adds an activity with name {string} with timeframe {string} to {string} to project {int}")
     public void the_project_manager_of_project_adds_an_activity_with_name_to_project(int projectNumber, String activityName, String startDate, String endDate, int projectNumber2) {
         // activity eller activity name som arg?
-        Activity activity = new Activity(activityName, startDate, endDate);
-        try {
-            RApp.getProjectFromID(projectNumber2).addActivity(activity);
-        } catch (OperationNotAllowedException e) {
+        try{
+            Activity activity = new Activity(activityName, startDate, endDate);
+            try {
+                RApp.getProjectFromID(projectNumber2).addActivity(activity);
+            } catch (OperationNotAllowedException e) {
+                errorMessage.setErrorMessage(e.getMessage());
+            }
+        } catch (IllegalDateException e){
             errorMessage.setErrorMessage(e.getMessage());
         }
-        //   project.addActivity(activity);
-        // throw new io.cucumber.java.PendingException();
+
     }
 
     @Then("the activity with name {string} is contained in project {int}'s list of activities")
@@ -67,13 +78,15 @@ public class ProjectSteps {
     }
 
     @Given("an activity with name {string} is contained in project {int}'s list of activities")
-    public void given_the_activity_with_name_is_contained_in_project_s_list_of_activities(String activityName, int projectNumber) {
-        Activity activity = new Activity(activityName, "2,2,2022", "2,3,2022");
-        try {
-            RApp.getProjectFromID(projectNumber).addActivity(activity);
-        } catch (OperationNotAllowedException e) {
-            errorMessage.setErrorMessage(e.getMessage());
-        }
+    public void given_the_activity_with_name_is_contained_in_project_s_list_of_activities(String activityName, int projectNumber) throws IllegalDateException {
+
+            Activity activity = new Activity(activityName, "2,2,2022", "2,3,2022");
+            try {
+                RApp.getProjectFromID(projectNumber).addActivity(activity);
+            } catch (OperationNotAllowedException e) {
+                errorMessage.setErrorMessage(e.getMessage());
+            }
+
     }
 
     @When("the project manager of project {int} assigns the worker {string} to {string} of project {int}")

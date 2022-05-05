@@ -3,6 +3,7 @@
  */
 package grp18.software.GUI;
 import grp18.software.app.*;
+import grp18.software.app.IllegalDateException;
 import grp18.software.domain.*;
 import grp18.software.tools.*;
 
@@ -15,7 +16,7 @@ import java.util.Scanner;
 public class GUI {
 
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws IllegalDateException {
         String[] workerNames = {"Naira","Pete","Gianfranco","Esther","John","Tajana","Yuudai","Gert","Leonas","Rama",
                 "Elpídio","Kjeld","Enda","Tomislav","Halkyone","Haytham","Kliment","Mukesh","Enyinnaya","Emanoil"};
         // Possible change to initials if cumbersome
@@ -66,16 +67,16 @@ public class GUI {
 
                     System.out.println("Input project start date, as 'year,month,day': ");
                     startDate = scanner.nextLine();
-                    //startDatedata = new StringToCalender(startDate,"0,0", "0,0");
 
                     System.out.println("Input project end date, as 'year,month,day': ");
                     endDate = scanner.nextLine();
-                    //endDatedata = new StringToCalender(endDate,"0
-                    //project = new Project(projectName,startDatedata.dateCal,endDatedata.dateCal);
-                    project = new Project(projectName,startDate,endDate);
-                    RegistrationApp.INSTANCE.addProject(project); // Add the project, to this instance of Registration app
-
-                    System.out.println("Project created with ID: " + project.getID());
+                    try {
+                        project = new Project(projectName,startDate,endDate);
+                        RegistrationApp.INSTANCE.addProject(project); // Add the project, to this instance of Registration app
+                        System.out.println("Project created with ID: " + project.getID());
+                    } catch (IllegalDateException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 2: // Add an activity to a chosen project
@@ -103,8 +104,14 @@ public class GUI {
 
                     // Create and add the activity
                     //activity = new Activity(activityName, startDatedata.dateCal,endDatedata.dateCal);
-                    activity = new Activity(activityName, startDate,endDate);
-                    addActivity(projectID, activity); // Add an activity
+
+                    try {
+                        activity = new Activity(activityName, startDate,endDate);
+                        addActivity(projectID, activity); // Add an activity
+                        System.out.println("Project created with ID: " + activity.getActivityName());
+                    } catch (IllegalDateException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 3: // Add one of the pre-generated workers to an activity in of the created projects
@@ -281,9 +288,9 @@ public class GUI {
                     break;
 
                 case 9:
-                    RegistrationApp.INSTANCE.addProject(new Project("Project 1"));
-                    RegistrationApp.INSTANCE.addProject(new Project("Project 2"));
-                    RegistrationApp.INSTANCE.addProject(new Project("Project 3"));
+                   // RegistrationApp.INSTANCE.addProject(new Project("Project 1"));
+                    //RegistrationApp.INSTANCE.addProject(new Project("Project 2"));
+                    //RegistrationApp.INSTANCE.addProject(new Project("Project 3"));
 
                     for (int i = 0; i< 3; i++){
                         try{

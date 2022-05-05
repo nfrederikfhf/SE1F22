@@ -1,5 +1,6 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.app.IllegalDateException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Activity;
 import grp18.software.domain.Worker;
@@ -15,11 +16,12 @@ import static org.junit.Assert.assertEquals;
 
 public class WorkerSteps {
     private RegistrationApp RApp;
+    private ErrorMessageHolder errorMessage;
 
-    public WorkerSteps(RegistrationApp RApp) {
+    public WorkerSteps(RegistrationApp RApp, ErrorMessageHolder errorMessage) {
         this.RApp = RApp;
+        this.errorMessage = errorMessage;
     }
-
 
     @Given("a worker with initials {string} has been assigned project manager of project {int}")
     public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
@@ -31,11 +33,14 @@ public class WorkerSteps {
     @Given("the worker {string} is working on {int} activities")
     public void the_worker_is_working_on_activities(String initials, int activityCount) {
         // Checks count of current activites worked on
-        //StringToCalender startDatedata = new StringToCalender("0,0,0", "0,0,0", "2,2,2022");
-        //StringToCalender endDatedata = new StringToCalender("0,0,0", "0,0,0", "2,3,2022");
+
         for (int i = 0; i<activityCount; i++){
-            RApp.getWorkerFromInitials(initials).addActivity(new Activity("DummyActivity"+i,
-                    "2,2,2022","2,3,2022"));
+            try {
+                RApp.getWorkerFromInitials(initials).addActivity(new Activity("DummyActivity" + i,
+                        "2,2,2022", "2,3,2022"));
+            } catch (IllegalDateException e){
+                errorMessage.setErrorMessage(e.getMessage());
+            }
         }
     }
 

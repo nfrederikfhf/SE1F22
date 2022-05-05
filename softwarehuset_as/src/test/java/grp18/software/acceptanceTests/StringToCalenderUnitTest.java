@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StringToCalenderUnitTest {
-
+/*
     @Test
     public void unitTestStringToCalender(){
         StringToCalender testData = new StringToCalender("2000,01,01", "8,00", "16,00");
@@ -30,5 +30,5 @@ public class StringToCalenderUnitTest {
         assertEquals(testData.startTimeCal, startTimeComparisonObject);
         assertEquals(testData.endTimeCal, endTimeComparisonObject);
     }
-
+*/
 }

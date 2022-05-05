@@ -1,10 +1,9 @@
 package grp18.software.domain;
 
 import grp18.software.app.ActivityNotFoundException;
+import grp18.software.app.IllegalDateException;
 import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
-import grp18.software.app.TooManyActivitiesException;
-import grp18.software.domain.Worker;
 import grp18.software.tools.StringToCalender;
 
 import java.util.ArrayList;
@@ -22,17 +21,23 @@ public class Project{
     private Calendar endDate;
     private RegistrationApp RApp;
 
-    public Project(String name){
-        this(name,"0,0,0","0,0,0");
+    public Project(String name)throws IllegalDateException {
+        this(name, "0,0,0", "0,0,0");
     }
 
-    public Project(String name, String startDate, String endDate){
+    public Project(String name, String startDate, String endDate) throws IllegalDateException {
             this.name = name;
             this.ID = 0;
-            StringToCalender startDatedata = new StringToCalender(startDate,"0,0", "0,0");
-            StringToCalender endDatedata = new StringToCalender(endDate,"0,0", "0,0");
-            this.startDate = startDatedata.dateCal;
-            this.endDate = endDatedata.dateCal;
+            try {
+                StringToCalender startDatedata = new StringToCalender(startDate, "0,0", "0,0");
+                StringToCalender endDatedata = new StringToCalender(endDate, "0,0", "0,0");
+                this.startDate = startDatedata.dateCal;
+                this.endDate = endDatedata.dateCal;
+            } catch (IllegalDateException e){
+                throw e;
+            }
+
+
         }
 
     public void assignManager(Worker projectManager){

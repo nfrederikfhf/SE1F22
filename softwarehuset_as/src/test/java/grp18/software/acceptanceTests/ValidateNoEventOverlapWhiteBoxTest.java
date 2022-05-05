@@ -1,5 +1,6 @@
 package grp18.software.acceptanceTests;
 import grp18.software.app.EventOverlapException;
+import grp18.software.app.IllegalDateException;
 import grp18.software.app.RegistrationApp;
 
 import grp18.software.domain.Activity;
@@ -18,7 +19,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     private ErrorMessageHolder errorMessage;
 
-    private void eventSetup(Worker worker){
+    private void eventSetup(Worker worker) throws IllegalDateException {
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
         try{
             worker.registerHours( "10,00", "13,00", "01,01,2022", activity1);
@@ -29,7 +30,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case A")
-    public void testValidateNoEventOverlapCaseA(){
+    public void testValidateNoEventOverlapCaseA() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "17,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
@@ -39,7 +40,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case B")
-    public void testValidateNoEventOverlapCaseB(){
+    public void testValidateNoEventOverlapCaseB() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
         StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "9,00");
@@ -50,7 +51,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case C")
-    public void testValidateNoEventOverlapCaseC(){
+    public void testValidateNoEventOverlapCaseC() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
         StringToCalender dateData = new StringToCalender("01,01,2022", "11,00", "14,00");
@@ -61,7 +62,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case D")
-    public void testValidateNoEventOverlapCaseD(){
+    public void testValidateNoEventOverlapCaseD() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
         StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "12,00");
@@ -72,7 +73,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case E")
-    public void testValidateNoEventOverlapCaseE(){
+    public void testValidateNoEventOverlapCaseE() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
         StringToCalender dateData = new StringToCalender("01,01,2022", "11,00", "12,00");
@@ -83,7 +84,7 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case F")
-    public void testValidateNoEventOverlapCaseF(){
+    public void testValidateNoEventOverlapCaseF() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
         StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "14,00");

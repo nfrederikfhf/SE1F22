@@ -1,13 +1,11 @@
 package grp18.software.domain;
 
-import grp18.software.app.OperationNotAllowedException;
+import grp18.software.app.IllegalDateException;
 import grp18.software.tools.StringToCalender;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.Objects;
 
 public class Activity {
     private String activityName;
@@ -15,13 +13,17 @@ public class Activity {
     private Calendar endDate;
     private List<Worker> workers = new ArrayList<>();
 
-    public Activity(String activityName, String startDate, String endDate){
+    public Activity(String activityName, String startDate, String endDate) throws IllegalDateException {
         this.activityName = activityName;
+        try{
+            StringToCalender startDatedata = new StringToCalender(startDate,"0,0", "0,0");
+            StringToCalender endDatedata = new StringToCalender(endDate,"0,0", "0,0");
+            this.startDate = startDatedata.dateCal;
+            this.endDate = endDatedata.dateCal;
+        } catch (IllegalDateException e){
+            throw e;
+        }
 
-        StringToCalender startDatedata = new StringToCalender(startDate,"0,0", "0,0");
-        StringToCalender endDatedata = new StringToCalender(endDate,"0,0", "0,0");
-        this.startDate = startDatedata.dateCal;
-        this.endDate = endDatedata.dateCal;
     }
 
     public String getActivityName() {
@@ -51,10 +53,8 @@ public class Activity {
 
             if (i++ == workers.size() - 1) {
                 stringBuilder.append(prefix + "   |__Hours worked: " + hours+"\n");
-                //stringBuilder.append(prefix+"\n");
             } else {
                 stringBuilder.append(prefix + "|  |__Hours worked: " + hours+"\n");
-                //stringBuilder.append(prefix + "|"+"\n");
             }
 
         }

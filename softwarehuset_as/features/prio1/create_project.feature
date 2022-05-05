@@ -5,10 +5,16 @@ Feature: Create a project
   Actors: ???
 
   Scenario: Two projects is created
-      When a project with name "Project 1" is created in the system
+      When a project with name "Project 1" from date "2020,01,01" to "2020,06,01" is created in the system
       And a project with name "Project 2" is created in the system
       Then a project with name "Project 1" and ID 22001 exists in the system
       And a project with name "Project 2" and ID 22002 exists in the system
+
+  Scenario: Two projects is created
+    When a project with name "Project 1" from date "2020,01,hello" to "hello" is created in the system
+    Then the error message "Date is invalid" is given
+    When a project with name "Project 1" from date "2020,01,01,01" to "2020,06,01" is created in the system
+    Then the error message "Date is invalid" is given
 
   Scenario: A project is created and renamed
       When a project with name "Project 1" is created in the system

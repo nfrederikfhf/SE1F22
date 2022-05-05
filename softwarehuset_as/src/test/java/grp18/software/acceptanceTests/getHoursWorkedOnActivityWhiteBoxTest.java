@@ -1,6 +1,7 @@
 package grp18.software.acceptanceTests;
 
 import grp18.software.app.EventOverlapException;
+import grp18.software.app.IllegalDateException;
 import grp18.software.domain.Activity;
 import grp18.software.domain.Worker;
 import junit.framework.TestCase;
@@ -12,9 +13,12 @@ import org.junit.jupiter.api.Test;
 class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
 
     private Worker worker = new Worker("JHM");
+
     private Activity activity1 = new Activity("Activity 1","2022,06,01","2022,06,10");
     private Activity activity2 = new Activity("Activity 2","2022,06,01","2022,06,10");
 
+    getHoursWorkedOnActivityWhiteBoxTest() throws IllegalDateException {
+    }
 
 
     @Test
