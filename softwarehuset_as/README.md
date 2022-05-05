@@ -31,8 +31,8 @@ into the terminal, you select option 1: and as such are presented with:
 ```
 Input project name:
 ```
-As such by following the on-screen instructions, the rest of the program 
-can be executed
+By following the on-screen instructions, the rest of the program 
+can be executed.
 
 Functionallity restrictions
 ===========================
