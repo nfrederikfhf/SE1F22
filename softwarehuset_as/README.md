@@ -26,6 +26,7 @@ Following operations are available:
 ```
 Then by inputting
 > 1
+
 into the terminal, you select option 1: and as such are presented with:
 ```
 Input project name:
@@ -42,6 +43,7 @@ Running Cucumber and JUnit tests
 ================================
 Running the file
 > AcceptanceTest
+
 with JUnit, will run all the Cucumber feature files.
 If inclusion of JUnit whitebox tests is wanted, the run configuration
 for JUnit needs to include the whole project.
