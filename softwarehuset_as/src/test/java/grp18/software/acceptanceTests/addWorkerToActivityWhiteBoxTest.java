@@ -1,5 +1,6 @@
 package grp18.software.acceptanceTests;
 
+import grp18.software.app.IllegalDateException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import grp18.software.app.OperationNotAllowedException;
@@ -24,6 +25,9 @@ class addWorkerToActivityWhiteBoxTest {
     private Worker worker4 = new Worker("WF");
     private ErrorMessageHolder errorMessage;
     private RegistrationApp RApp;
+
+    addWorkerToActivityWhiteBoxTest() throws IllegalDateException {
+    }
 
     @BeforeEach
     private void SetUp(){ // Setup the project, activity and add workers to project
