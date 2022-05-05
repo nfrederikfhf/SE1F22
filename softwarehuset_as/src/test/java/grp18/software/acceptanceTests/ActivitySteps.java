@@ -1,6 +1,7 @@
 package grp18.software.acceptanceTests;
 
 import grp18.software.app.ActivityNotFoundException;
+import grp18.software.app.IllegalDateException;
 import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Activity;
@@ -69,5 +70,18 @@ public class ActivitySteps {
             errorMessage.setErrorMessage(e.getMessage());
         }
         assertEquals(activityName, activity.getActivityName());
+    }
+    @When("an activity with name {string} from date {string} to {string} is added to project {int}")
+    public void an_activity_with_name_from_date_to_is_added_to_project(String activityName, String startDate, String endDate, int projectID) {
+        try {
+            Activity activity = new Activity(activityName, startDate, endDate);
+            try {
+                RApp.getProjectFromID(projectID).addActivity(activity);
+            } catch (OperationNotAllowedException e) {
+                errorMessage.setErrorMessage(e.getMessage());
+            }
+        }catch (IllegalDateException e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 }

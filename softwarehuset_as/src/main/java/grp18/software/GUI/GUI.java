@@ -189,7 +189,7 @@ public class GUI {
                         }
                         worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
 
-                        System.out.println("Input date: ");
+                        System.out.println("Input work date, as 'year,month,day': ");
                         date = scanner.nextLine();
                         System.out.println("Input start time as 'hour,minutes': ");
                         startTime = scanner.nextLine();
@@ -311,7 +311,7 @@ public class GUI {
                                 break;
                             }
                             project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
-                            project.getStatusReport("",report);
+                            project.getStatusReport("   ",report);
                         }
                         System.out.println(report);
                         break;
