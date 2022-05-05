@@ -34,6 +34,13 @@ Input project name:
 By following the on-screen instructions, the rest of the program 
 can be executed.
 
+Entering
+```
+0
+```
+when the selection menu, will always exit the GUI and program, thus losing the current
+instance of the program.
+
 Functionallity restrictions
 ===========================
 When using the GUI, you cannot add an activity to a non existant project,
