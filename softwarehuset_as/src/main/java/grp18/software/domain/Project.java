@@ -41,7 +41,7 @@ public class Project{
 
     public void assignManager(Worker projectManager) throws OperationNotAllowedException{
         if(projectManager == null) {
-            throw new OperationNotAllowedException("Activity not found");
+            throw new OperationNotAllowedException("Worker not found");
         }
         this.projectManager = projectManager;
     }
@@ -81,6 +81,8 @@ public class Project{
     }
 
     public void addWorkerToActivity(Worker worker, Activity activity) throws OperationNotAllowedException{
+        assert activity != null;
+
         if (activity.getWorkers().contains(worker)){
             throw new OperationNotAllowedException("Worker Already exists in database");
         }
@@ -89,8 +91,9 @@ public class Project{
         }
         worker.addActivity(activity);
         activity.addWorker(worker);
-    }
 
+        assert worker.getAmountOfActivities() >= 1 && activity.getWorkers().size() >= 1;
+    }
     public List<Worker> getWorkers(){
         return this.workers;
     }

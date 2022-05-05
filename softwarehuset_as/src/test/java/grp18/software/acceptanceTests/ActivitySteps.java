@@ -61,4 +61,13 @@ public class ActivitySteps {
         }
     }
 
+    @Then("the new name of {string} is {string} in project {int}")
+    public void the_new_name(String oldActivityName,String activityName, int projectID) {
+        try {
+            activity = RApp.getProjectFromID(projectID).checkActivityName(activityName);
+        } catch (ActivityNotFoundException e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+        assertEquals(activityName, activity.getActivityName());
+    }
 }

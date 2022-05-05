@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProjectSteps {
@@ -116,6 +117,11 @@ public class ProjectSteps {
         } catch (OperationNotAllowedException e){
             errorMessage.setErrorMessage(e.getMessage());
         }
+    }
+
+    @Then("the size of projects available is {int}")
+    public void the_size_of_projects(int arraySize){
+        assertEquals(arraySize,RApp.getProjects().size());
     }
 
 }

@@ -83,4 +83,9 @@ public class WorkerSteps {
     public void the_worker_is_managing_project(String workerInitials) {
         assertTrue(RApp.getWorkerFromInitials(workerInitials).getProjectManager());
     }
+
+    @Then("the size of workers in the project is {int}")
+    public void the_size_of_workers(int arraySize){
+        assertEquals(arraySize,RApp.getWorkers().size());
+    }
 }

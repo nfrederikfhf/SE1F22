@@ -32,5 +32,24 @@ Scenario: The project manager adds worker to project
     And an activity with name "Activity 1" is contained in project 22001's list of activities
     When the project manager of project 22001 assigns the worker "NFF" to project 22001
     Then the worker "NFF" is working on project 22001
+    When the project manager of project 22001 assigns the worker "NFF" to project 22001
+    Then the error message "Worker already in project" is given
+
+
+Scenario: The project manager adds the same worker twice to project
+    Given a project with number 22001 and name "Project 1" exists
+    And there exists a worker with initials "JHM" from system database
+    And a worker with initials "JHM" has been assigned project manager of project 22001
+    And there exists a worker with initials "NFF" from system database
+    And an activity with name "Activity 1" is contained in project 22001's list of activities
+    When the project manager of project 22001 assigns the worker "NFF" to project 22001
+    Then the worker "NFF" is working on project 22001
     And the worker "NFF" is not working on activity with name "Activity 1" in project 22001
+
+Scenario: Workers are added to the systems database
+    Given a project with number 22001 and name "Project 1" exists
+    And there exists a worker with initials "JHM" from system database
+    And there exists a worker with initials "NFF" from system database
+    And there exists a worker with initials "WM" from system database
+    Then the size of workers in the project is 3
 

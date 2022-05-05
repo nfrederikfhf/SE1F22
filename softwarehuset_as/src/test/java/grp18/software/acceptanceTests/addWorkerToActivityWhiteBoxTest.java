@@ -87,7 +87,6 @@ class addWorkerToActivityWhiteBoxTest {
     @DisplayName("Case C")
     public void addWorkertoActivityWhiteBoxTestTestCaseC(){
         // Check if a non existant worker in the project can be added
-        // this would be as an assistant
         try {
             project1.addWorkerToActivity(worker3, activity1);
         } catch (OperationNotAllowedException e) {

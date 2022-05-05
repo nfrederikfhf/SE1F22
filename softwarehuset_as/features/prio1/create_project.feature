@@ -29,3 +29,17 @@ Feature: Create a project
       And there exists a worker with initials "JHM" from system database
       When the worker with initials "JHM" is being assigned project manager of project 22001
       Then the worker "JHM" is managing a project
+
+  Scenario: A project sets its  manager with a non existent worker
+    Given a project with number 22001 and name "Project 1" exists
+    And there exists a worker with initials "JHM" from system database
+    When the worker with initials "WHJHM" is being assigned project manager of project 22001
+    Then the error message "Worker not found" is given
+
+
+  Scenario: All added projects are shown
+    When a project with name "Project 1" is created in the system
+    When a project with name "Project 2" is created in the system
+    When a project with name "Project 3" is created in the system
+    When a project with name "Project 4" is created in the system
+    Then the size of projects available is 4
