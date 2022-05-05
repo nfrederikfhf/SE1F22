@@ -15,6 +15,8 @@ Feature: Create a project
     Then the error message "Date is invalid" is given
     When a project with name "Project 1" from date "2020,01,01,01" to "2020,06,01" is created in the system
     Then the error message "Date is invalid" is given
+    When a project with name "Project 1" from date "" to "2020,06,01" is created in the system
+    Then the error message "Date is invalid" is given
 
   Scenario: A project is created and renamed
       When a project with name "Project 1" is created in the system

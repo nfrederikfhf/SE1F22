@@ -18,7 +18,7 @@ public class StringToCalender {
     public GregorianCalendar dateCal;
 
     public StringToCalender(String date, String startTime, String endTime) throws IllegalDateException {
-        if(date == null || date.trim().isEmpty() || date.equals("hello")) {
+        if(date == null || date.trim().isEmpty()) {
             throw new IllegalDateException("Date is invalid");
         }
         String startTimeString = date + "," + startTime;
