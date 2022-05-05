@@ -50,12 +50,12 @@ public class Event {
         return this.hoursWorked;
     }
 
-    public void setTimeframe(String date, String startTime, String endTime) {
+    public void setTimeframe(String date, String startTime, String endTime) throws IllegalDateException{
         StringToCalender dateData = null;
         try {
             dateData = new StringToCalender(date, startTime, endTime);
         } catch (IllegalDateException e) {
-            e.printStackTrace();
+            throw e;
         }
         this.date = dateData.dateCal;
         this.startTime = dateData.startTimeCal;
