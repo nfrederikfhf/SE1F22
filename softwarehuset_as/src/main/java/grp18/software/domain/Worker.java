@@ -66,18 +66,18 @@ public class Worker {
     }
 
     public void registerHours(String startTime, String endTime, String date, Activity relatedActivity) throws EventOverlapException {
+
+        int ID = events.size() + 1; //ID 0 reserved for dummy ID in editEvent'
+        Event event = null;
         try {
-            StringToCalender dateData = new StringToCalender(date, startTime, endTime);
-            int ID = events.size() + 1; //ID 0 reserved for dummy ID in editEvent
-            Event event = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, relatedActivity, ID);
-            if (!validateNoEventOverlap(event)) {
-                throw new EventOverlapException("Event is overlapping another event");
-            }
-            events.add(event);
-        } catch (IllegalDateException e){
+            event = new Event(startTime, endTime, date, relatedActivity, ID);
+        } catch (IllegalDateException e) {
             e.printStackTrace();
         }
-
+        if (!validateNoEventOverlap(event)) {
+            throw new EventOverlapException("Event is overlapping another event");
+        }
+        events.add(event);
     }
 
     public Event getEventFromID(int ID) {
@@ -86,25 +86,23 @@ public class Worker {
 
     public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException {
 
-        try{
-            StringToCalender newDateData = new StringToCalender(newDate, newStartTime, newEndTime);
-            //StringToCalender dateDataActivity = new StringToCalender("2222,02,02", "0,0", "0,0");
-            //Activity dummyActivity = new Activity("dummyActivity", dateDataActivity.startTimeCal, dateDataActivity.endTimeCal);
-            //Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, dummyActivity, 0);
-            Event oldEvent = getEventFromID(eventID);
-            events.remove(oldEvent);
-            Event newEvent = new Event(newDateData.startTimeCal, newDateData.endTimeCal, newDateData.dateCal, null, 0);
-            if (!validateNoEventOverlap(newEvent)) {
-                events.add(oldEvent);
-                throw new EventOverlapException("Event is overlapping another event");
-            }
-            oldEvent.setStartTime(newDateData.startTimeCal);
-            oldEvent.setEndTime(newDateData.endTimeCal);
-            oldEvent.setDate(newDateData.dateCal);
-            events.add(oldEvent);
-        } catch (IllegalDateException e){
+        //StringToCalender dateDataActivity = new StringToCalender("2222,02,02", "0,0", "0,0");
+        //Activity dummyActivity = new Activity("dummyActivity", dateDataActivity.startTimeCal, dateDataActivity.endTimeCal);
+        //Event dummyEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, dummyActivity, 0);
+        Event oldEvent = getEventFromID(eventID);
+        events.remove(oldEvent);
+        Event newEvent = null;
+        try {
+            newEvent = new Event(newStartTime, newEndTime, newDate, null, 0);
+        } catch (IllegalDateException e) {
             e.printStackTrace();
         }
+        if (!validateNoEventOverlap(newEvent)) {
+            events.add(oldEvent);
+            throw new EventOverlapException("Event is overlapping another event");
+        }
+        oldEvent.setTimeframe(newDate, newStartTime, newEndTime);
+        events.add(oldEvent);
     }
 
     public List<Event> getEvents() {

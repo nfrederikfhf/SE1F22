@@ -292,37 +292,28 @@ public class GUI {
                         break;
 
                     case 9:
-                        // RegistrationApp.INSTANCE.addProject(new Project("Project 1"));
-                        //RegistrationApp.INSTANCE.addProject(new Project("Project 2"));
-                        //RegistrationApp.INSTANCE.addProject(new Project("Project 3"));
-
-                        for (int i = 0; i < 3; i++) {
+                        System.out.println("1. Entire System\n2. A specific problem");
+                        StringBuilder report = new StringBuilder();
+                        String choice = scanner.nextLine();
+                        if (choice.trim().equals("1")){
+                            RegistrationApp.INSTANCE.getStatusReport(report);
+                        } else if (choice.trim().equals("2")){
+                            getAvailableProjects(scanner);
                             try {
-                                RegistrationApp.INSTANCE.getProjectFromID(22001).addActivity(new Activity("Activity " + (i + 1), null, null));
-                                RegistrationApp.INSTANCE.getProjectFromID(22002).addActivity(new Activity("Activity " + (i + 1), null, null));
-                                RegistrationApp.INSTANCE.getProjectFromID(22003).addActivity(new Activity("Activity " + (i + 1), null, null));
-
-                            } catch (OperationNotAllowedException e) {
-                                System.out.println("hov");
+                                projectID = Integer.parseInt(scanner.next() + scanner.nextLine());
+                            } catch (Exception e) { // Catch any mistypes to avoid program exits.
+                                System.out.println("Input is not an integer, try again");
+                                break;
                             }
 
+                            if (RegistrationApp.INSTANCE.getProjectFromID(projectID) == null) { // Check if project exists
+                                System.out.println("Project not found, try again");
+                                break;
+                            }
+                            project = RegistrationApp.INSTANCE.getProjectFromID(projectID);
+                            project.getStatusReport("",report);
                         }
-                        List<Worker> workers = RegistrationApp.INSTANCE.getWorkers();
-                        for (Worker workeren : workers.subList(0, 3)) {
-                            RegistrationApp.INSTANCE.getProjectFromID(22001).getActivityFromName("Activity 1").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22001).getActivityFromName("Activity 2").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22001).getActivityFromName("Activity 3").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 1").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 2").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 3").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 1").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 2").addWorker(workeren);
-                            RegistrationApp.INSTANCE.getProjectFromID(22003).getActivityFromName("Activity 3").addWorker(workeren);
-                        }
-
-                        //RegistrationApp.INSTANCE.getStatusReport();
-                        //RegistrationApp.INSTANCE.getProjectFromID(22002).getStatusReport("   ");
-                        //RegistrationApp.INSTANCE.getProjectFromID(22002).getActivityFromName("Activity 1").getStatusReport("   ");
+                        System.out.println(report);
                         break;
                 }
             } catch (NumberFormatException e){
