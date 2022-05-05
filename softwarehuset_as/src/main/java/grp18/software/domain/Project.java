@@ -37,10 +37,12 @@ public class Project{
                 throw e;
             }
 
-
         }
 
-    public void assignManager(Worker projectManager){
+    public void assignManager(Worker projectManager) throws OperationNotAllowedException{
+        if(projectManager == null) {
+            throw new OperationNotAllowedException("Activity not found");
+        }
         this.projectManager = projectManager;
     }
 

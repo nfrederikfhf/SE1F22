@@ -1,6 +1,7 @@
 package grp18.software.acceptanceTests;
 
 import grp18.software.app.IllegalDateException;
+import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Activity;
 import grp18.software.domain.Worker;
@@ -26,8 +27,12 @@ public class WorkerSteps {
     @Given("a worker with initials {string} has been assigned project manager of project {int}")
     public void a_worker_with_initials_has_been_assigned_project_manager_of_project(String initials, int projectID) {
         // Assigns the project manager
-        RApp.getProjectFromID(projectID).assignManager(RApp.getWorkerFromInitials(initials));
-        RApp.getWorkerFromInitials(initials).setProjectManager(true);
+        try {
+            RApp.getProjectFromID(projectID).assignManager(RApp.getWorkerFromInitials(initials));
+            RApp.getWorkerFromInitials(initials).setProjectManager(true);
+        } catch (OperationNotAllowedException e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 
     @Given("the worker {string} is working on {int} activities")
@@ -67,8 +72,12 @@ public class WorkerSteps {
 
     @When("the worker with initials {string} is being assigned project manager of project {int}")
     public void the_worker_with_initials_is_being_assigned_project_manager_of_project(String workerInitials, Integer projectID) {
-        RApp.getProjectFromID(projectID).assignManager(RApp.getWorkerFromInitials(workerInitials));
-        RApp.getWorkerFromInitials(workerInitials).setProjectManager(true);
+        try {
+            RApp.getProjectFromID(projectID).assignManager(RApp.getWorkerFromInitials(workerInitials));
+            RApp.getWorkerFromInitials(workerInitials).setProjectManager(true);
+        } catch (OperationNotAllowedException e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
     @Then("the worker {string} is managing a project")
     public void the_worker_is_managing_project(String workerInitials) {

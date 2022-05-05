@@ -33,3 +33,4 @@ Scenario: The project manager adds worker to project
     When the project manager of project 22001 assigns the worker "NFF" to project 22001
     Then the worker "NFF" is working on project 22001
     And the worker "NFF" is not working on activity with name "Activity 1" in project 22001
+

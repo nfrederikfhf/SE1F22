@@ -229,11 +229,14 @@ public class GUI {
                             break;
                         }
                         worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
+                        try {
+                            project.assignManager(worker); // Assign as project manager in registration app
+                            worker.setProjectManager(true); // Mark the unique worker object as project manager
 
-                        project.assignManager(worker); // Assign as project manager in registration app
-                        worker.setProjectManager(true); // Mark the unique worker object as project manager
-
-                        System.out.println("You have assigned " + workerName + " as project manager of project " + projectID);
+                            System.out.println("You have assigned " + workerName + " as project manager of project " + projectID);
+                        } catch (OperationNotAllowedException e){
+                            System.out.println(e.getMessage());
+                        }
                         break;
 
                     case 6:
