@@ -25,7 +25,9 @@ Following operations are available:
  0: Exit 
 ```
 Then by inputting
-> 1
+```
+1
+```
 
 into the terminal, you select option 1: and as such are presented with:
 ```
