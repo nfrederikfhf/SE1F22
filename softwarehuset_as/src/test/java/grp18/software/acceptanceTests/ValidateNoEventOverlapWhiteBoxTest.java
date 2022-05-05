@@ -1,20 +1,15 @@
 package grp18.software.acceptanceTests;
 import grp18.software.app.EventOverlapException;
 import grp18.software.app.IllegalDateException;
-import grp18.software.app.RegistrationApp;
-
 import grp18.software.domain.Activity;
 import grp18.software.domain.Event;
 import grp18.software.domain.Worker;
-import grp18.software.tools.StringToCalender;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//Niels
 public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
 
     private ErrorMessageHolder errorMessage;

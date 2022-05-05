@@ -2,18 +2,15 @@ package grp18.software.domain;
 
 import grp18.software.app.EventOverlapException;
 import grp18.software.app.IllegalDateException;
-import grp18.software.app.RegistrationApp;
-import grp18.software.tools.StringToCalender;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
+//William
 public class Worker {
     private String initials;
     private List<Activity> activities = new ArrayList<>();
     private List<Event> events = new ArrayList<>();
-    private List<Project> managementList = new ArrayList<>();
     private Boolean projectManager = false;
 
     public Worker(String initials) {
@@ -36,10 +33,12 @@ public class Worker {
         return activities.size();
     }
 
+    //William
     public void addActivity(Activity activity) {
         this.activities.add(activity);
     }
 
+    //Niels
     public Boolean validateNoEventOverlap(Event newEvent) {
         List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(newEvent.getDate())).collect(Collectors.toList());
 
@@ -63,6 +62,7 @@ public class Worker {
         return true;
     }
 
+    //Niels
     public void registerHours(String startTime, String endTime, String date, Activity relatedActivity) throws EventOverlapException, IllegalDateException {
 
         int ID = events.size() + 1; //ID 0 reserved for dummy ID in editEvent'
@@ -82,6 +82,7 @@ public class Worker {
         return this.events.stream().filter(x -> x.getID() == ID).findFirst().orElse(null);
     }
 
+    //Jacob
     public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException, IllegalDateException {
 
         Event oldEvent = getEventFromID(eventID);
@@ -103,6 +104,7 @@ public class Worker {
         return this.events;
     }
 
+    //Jacob
     public int getHoursWorkedOnActivity(Activity activity) {
 
         int sum = 0;

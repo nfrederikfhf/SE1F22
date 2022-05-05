@@ -1,13 +1,10 @@
 package grp18.software.domain;
 
-import com.sun.source.tree.BreakTree;
 import grp18.software.app.IllegalDateException;
-import grp18.software.app.OperationNotAllowedException;
 import grp18.software.tools.StringToCalender;
 
-import java.util.Calendar;
 import java.util.GregorianCalendar;
-
+//Niels Class Owner
 public class Event {
     private GregorianCalendar startTime;
     private GregorianCalendar endTime;
@@ -50,6 +47,7 @@ public class Event {
         return this.hoursWorked;
     }
 
+    //Niels
     public void setTimeframe(String date, String startTime, String endTime) throws IllegalDateException{
         StringToCalender dateData = null;
         try {

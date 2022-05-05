@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Scanner;
 
 
-
+//William Class Owner
+//William made everything which does not have a specific author here
 public class GUI {
 
 
@@ -291,6 +292,7 @@ public class GUI {
                         System.out.println("Activity: " + activityName + " has been renamed to: " + newActivityName);
                         break;
 
+                    //Jacob
                     case 9:
                         System.out.println("1. Entire System\n2. A specific problem");
                         StringBuilder report = new StringBuilder();

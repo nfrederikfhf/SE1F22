@@ -12,6 +12,7 @@ import grp18.software.app.IllegalDateException;
 import java.util.GregorianCalendar;
 import java.util.*;
 
+//Niels came up with original logic, Jacob bugfixed and made exceptions in constructor
 public class StringToCalender {
     public GregorianCalendar startTimeCal;
     public GregorianCalendar endTimeCal;

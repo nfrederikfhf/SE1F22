@@ -2,7 +2,6 @@
 
 Feature: Create a project
   Description: Creating a project in the system
-  Actors: ???
 
   Scenario: Two projects is created
       When a project with name "Project 1" from date "2020,01,01" to "2020,06,01" is created in the system

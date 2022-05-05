@@ -5,25 +5,21 @@ import grp18.software.app.IllegalDateException;
 import grp18.software.app.OperationNotAllowedException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Activity;
-import grp18.software.domain.Project;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+//Vincent
 public class ActivitySteps {
     private ErrorMessageHolder errorMessage;
     private RegistrationApp RApp;
-    private Project project;
     private Activity activity;
 
     public ActivitySteps(RegistrationApp RApp, ErrorMessageHolder errorMessage){
         this.errorMessage = errorMessage;
         this.RApp = RApp;
     }
-
 
     @Then("the error message {string} is given")
     public void the_error_message_is_given(String errorMessage) {
@@ -71,6 +67,8 @@ public class ActivitySteps {
         }
         assertEquals(activityName, activity.getActivityName());
     }
+
+    //Jacob
     @When("an activity with name {string} from date {string} to {string} is added to project {int}")
     public void an_activity_with_name_from_date_to_is_added_to_project(String activityName, String startDate, String endDate, int projectID) {
         try {

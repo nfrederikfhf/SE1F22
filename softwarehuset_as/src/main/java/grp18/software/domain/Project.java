@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
+//Jacob Class Owner
 public class Project{
     private String name;
     private List<Activity> activities = new ArrayList<>();
@@ -19,9 +20,8 @@ public class Project{
     private Worker projectManager;
     private Calendar startDate;
     private Calendar endDate;
-    private RegistrationApp RApp;
 
-    public Project(String name)throws IllegalDateException {
+    public Project(String name) throws IllegalDateException {
         this(name, "0,0,0", "0,0,0");
     }
 
@@ -38,7 +38,7 @@ public class Project{
             }
 
         }
-
+    //William
     public void assignManager(Worker projectManager) throws OperationNotAllowedException{
         if(projectManager == null) {
             throw new OperationNotAllowedException("Worker not found");
@@ -61,25 +61,25 @@ public class Project{
     public int getID(){
         return this.ID;
     }
-
+    //Jacob
     public Activity getActivityFromName(String name){
         return this.activities.stream().filter(x -> Objects.equals(x.getActivityName(), name)).findFirst().orElse(null);
     }
-
+    //William
     public Activity checkActivityName(String name) throws ActivityNotFoundException {
         if(getActivityFromName(name) == null) {
             throw new ActivityNotFoundException("Activity not found");
         }
         return getActivityFromName(name);
     }
-
+    //William
     public void addActivity (Activity activity) throws OperationNotAllowedException {
         if (getActivityFromName(activity.getActivityName())!=null){
             throw new OperationNotAllowedException("Name for activity already used in the project");
         }
         activities.add(activity);
     }
-
+    //William
     public void addWorkerToActivity(Worker worker, Activity activity) throws OperationNotAllowedException{
         assert activity != null;
 
@@ -98,6 +98,7 @@ public class Project{
         return this.workers;
     }
 
+    //Jacob
     public void addWorker(Worker worker) throws OperationNotAllowedException{
         if (this.workers.contains(worker)){
             throw new OperationNotAllowedException("Worker already in project");
@@ -105,6 +106,7 @@ public class Project{
         this.workers.add(worker);
     }
 
+    //Jacob
     public void getStatusReport(String prefix, StringBuilder stringBuilder){
         String p = "";
 

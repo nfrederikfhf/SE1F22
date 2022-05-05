@@ -6,7 +6,7 @@ import grp18.software.tools.StringToCalender;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-
+//Jacob class Owner
 public class Activity {
     private String activityName;
     private Calendar startDate;
@@ -28,7 +28,7 @@ public class Activity {
     public String getActivityName() {
         return this.activityName;
     }
-
+    //William
     public void addWorker(Worker worker){
         this.workers.add(worker);
     }
@@ -41,6 +41,7 @@ public class Activity {
         return this.workers;
     }
 
+    //Jacob
     public void getStatusReport(String prefix, StringBuilder stringBuilder){
 
         stringBuilder.append(prefix.substring(0,prefix.length()-3)+"|__" +this.activityName+":\n");

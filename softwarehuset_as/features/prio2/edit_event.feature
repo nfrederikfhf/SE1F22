@@ -1,5 +1,4 @@
 #Niels
-
 Feature: Edit event
 Description: A worker wants to change timeframe of an event
 Actor: A worker
@@ -44,7 +43,3 @@ Scenario: A worker wants to change the timeframe of an event, and there is no ov
     When the worker "JHM" changes the timeframe of the event with ID 2 to "8,00,30" to "12,11,00" with date "2,6"
     Then the error message "Date is invalid" is given
 
-
-#Scenario: Change date of event with no overlap
-
-#Scenario: Change date of event with overlap

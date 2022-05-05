@@ -5,7 +5,6 @@ import grp18.software.app.IllegalDateException;
 import grp18.software.app.RegistrationApp;
 import grp18.software.domain.Activity;
 import grp18.software.domain.Event;
-import grp18.software.domain.Worker;
 import grp18.software.tools.StringToCalender;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -15,10 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+//Niels
 public class EventSteps {
 
     private RegistrationApp RApp;
-    private Worker worker;
     private Event event1;
     private ErrorMessageHolder errorMessage;
 

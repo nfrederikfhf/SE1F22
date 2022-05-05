@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-
+//Jacob
 class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
 
     private Worker worker = new Worker("JHM");
@@ -30,7 +30,7 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case B")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseB() throws EventOverlapException {
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseB(){
         try {
             worker.registerHours("09,00", "17,00", "2022,06,02", activity1);
         } catch (EventOverlapException | IllegalDateException e){
@@ -41,7 +41,7 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case C")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseC() throws EventOverlapException {
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseC(){
         try {
             worker.registerHours("09,00", "17,00", "2022,06,02", activity2);
         } catch (EventOverlapException | IllegalDateException e){
@@ -51,7 +51,7 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
     }
     @Test
     @DisplayName("Case D")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseD() throws EventOverlapException {
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseD(){
     try {
         worker.registerHours("09,00", "17,00", "2022,06,02", activity1);
         worker.registerHours("09,00", "17,00", "2022,06,03", activity2);
@@ -63,7 +63,7 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
 
     @Test
     @DisplayName("Case E")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseE() throws EventOverlapException {
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseE(){
 
         activity1.addWorker(worker);
         try {
