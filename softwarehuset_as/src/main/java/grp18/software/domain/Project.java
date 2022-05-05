@@ -83,14 +83,14 @@ public class Project{
     public void addWorkerToActivity(Worker worker, Activity activity) throws OperationNotAllowedException{
         assert activity != null;
 
-        if (activity.getWorkers().contains(worker)){
+        if (activity.getWorkers().contains(worker)){ // 1
             throw new OperationNotAllowedException("Worker Already exists in database");
         }
-        if(worker == null){
+        if(worker == null){ // 2
             throw new OperationNotAllowedException("The worker is invalid");
         }
-        worker.addActivity(activity);
-        activity.addWorker(worker);
+        worker.addActivity(activity); // 2
+        activity.addWorker(worker); // 3
 
         assert worker.getAmountOfActivities() >= 1 && activity.getWorkers().size() >= 1;
     }

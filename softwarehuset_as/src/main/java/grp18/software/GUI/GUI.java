@@ -17,7 +17,7 @@ public class GUI {
 
 
     public static void main(String[] args) throws IllegalDateException {
-        String[] workerNames = {"Naira","Pete","Gianfranco","Esther","John","Tajana","Yuudai","Gert","Leonas","Rama",
+        String[] workerNames = {"Naira","Pete","Gianfranco","Esther","Torsten","Tajana","Yuudai","Gert","Leonas","Rama",
                 "Elpídio","Kjeld","Enda","Tomislav","Halkyone","Haytham","Kliment","Mukesh","Enyinnaya","Emanoil"};
         // Possible change to initials if cumbersome
         // Define variables used in switch statement, as many are common across cases
@@ -189,7 +189,7 @@ public class GUI {
                         }
                         worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName); // Get the worker object
 
-                        System.out.println("Input date: ");
+                        System.out.println("Input date as, 'year,month,day': ");
                         date = scanner.nextLine();
                         System.out.println("Input start time as 'hour,minutes': ");
                         startTime = scanner.nextLine();
