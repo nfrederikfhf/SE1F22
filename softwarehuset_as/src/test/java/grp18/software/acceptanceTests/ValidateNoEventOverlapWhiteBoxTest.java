@@ -32,9 +32,13 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
     @DisplayName("Case A")
     public void testValidateNoEventOverlapCaseA() throws IllegalDateException {
         Worker worker = new Worker("NFF");
-        StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "17,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
-        Event newEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
+        Event newEvent = null;
+        try {
+            newEvent = new Event("8,00", "17,00", "01,01,2022", activity1, 1);
+        } catch (IllegalDateException e) {
+            e.printStackTrace();
+        }
         Assertions.assertTrue(worker.validateNoEventOverlap(newEvent));
     }
 
@@ -43,9 +47,13 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
     public void testValidateNoEventOverlapCaseB() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
-        StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "9,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
-        Event newEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
+        Event newEvent = null;
+        try {
+            newEvent = new Event("8,00", "9,00", "01,01,2022", activity1, 1);
+        } catch (IllegalDateException e) {
+            e.printStackTrace();
+        }
         Assertions.assertTrue(worker.validateNoEventOverlap(newEvent));
     }
 
@@ -54,9 +62,13 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
     public void testValidateNoEventOverlapCaseC() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
-        StringToCalender dateData = new StringToCalender("01,01,2022", "11,00", "14,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
-        Event newEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
+        Event newEvent = null;
+        try {
+            newEvent = new Event("11,00", "14,00", "01,01,2022", activity1, 1);
+        } catch (IllegalDateException e) {
+            e.printStackTrace();
+        }
         Assertions.assertFalse(worker.validateNoEventOverlap(newEvent));
     }
 
@@ -65,9 +77,13 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
     public void testValidateNoEventOverlapCaseD() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
-        StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "12,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
-        Event newEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
+        Event newEvent = null;
+        try {
+            newEvent = new Event("8,00", "12,00", "01,01,2022", activity1, 1);
+        } catch (IllegalDateException e) {
+            e.printStackTrace();
+        }
         Assertions.assertFalse(worker.validateNoEventOverlap(newEvent));
     }
 
@@ -76,9 +92,13 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
     public void testValidateNoEventOverlapCaseE() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
-        StringToCalender dateData = new StringToCalender("01,01,2022", "11,00", "12,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
-        Event newEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
+        Event newEvent = null;
+        try {
+            newEvent = new Event("11,00", "12,00", "01,01,2022", activity1, 1);
+        } catch (IllegalDateException e) {
+            e.printStackTrace();
+        }
         Assertions.assertFalse(worker.validateNoEventOverlap(newEvent));
     }
 
@@ -87,11 +107,13 @@ public class ValidateNoEventOverlapWhiteBoxTest extends TestCase{
     public void testValidateNoEventOverlapCaseF() throws IllegalDateException {
         Worker worker = new Worker("NFF");
         eventSetup(worker);
-        StringToCalender dateData = new StringToCalender("01,01,2022", "8,00", "14,00");
         Activity activity1 = new Activity("Activity1", "01,01,2022", "01,02,2022");
-        Event newEvent = new Event(dateData.startTimeCal, dateData.endTimeCal, dateData.dateCal, activity1, 1);
+        Event newEvent = null;
+        try {
+            newEvent = new Event("8,00", "14,00", "01,01,2022", activity1, 1);
+        } catch (IllegalDateException e) {
+            e.printStackTrace();
+        }
         Assertions.assertFalse(worker.validateNoEventOverlap(newEvent));
     }
-
-
 }
