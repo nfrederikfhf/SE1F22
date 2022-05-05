@@ -34,7 +34,7 @@ Input project name:
 By following the on-screen instructions, the rest of the program 
 can be executed.
 
-Entering
+Entering:
 ```
 0
 ```
