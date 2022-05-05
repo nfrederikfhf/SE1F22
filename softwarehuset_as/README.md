@@ -31,6 +31,16 @@ into the terminal, you select option 1: and as such are presented with:
 ```
 Input project name:
 ```
+After the project name is entered as a string, the request:
+```
+Input project start date, as 'year,month,day': 
+```
+***It is extremly important that year is inputted as an integer, the same is valid for month
+and date***
+The following is an example of a valid date input:
+```
+2022,01,01
+```
 By following the on-screen instructions, the rest of the program 
 can be executed.
 
@@ -40,6 +50,27 @@ Entering:
 ```
 when the selection menu is present, will always exit the GUI and program, thus losing the current
 instance of the program.
+
+Registering worker hours
+========================
+The following is an example of inputting work hours on a specfic activity.
+After entering the workers initals you are met with:
+```
+Input date as, 'year,month,day': 
+```
+Here a valid input will be:
+```
+2022,01,01
+```
+After inputting the date, the following output is given:
+```
+Input start time as 'hour,minutes': 
+```
+Here a valid input will be:
+```
+14,30
+```
+And likewise for the end time.
 
 Functionallity restrictions
 ===========================
