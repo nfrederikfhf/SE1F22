@@ -1,15 +1,90 @@
-This project can be used as a starting project for your own projects.
+Run instructions
+================
+This project is run by running the GUI class, as it accesses the main menu for
+Softwarehuset A/S's projectplanner software. The inputs in the GUI is entered
+in the terminal, by following the on-screen instructions.
 
-It contains all the necessary libraries to run Cucumber tests, JUnit 5 tests, and JUnit 4 tests. In addition, it contains the reference to the Mockito libraries.
+An example of GUI being run
+===========================
+```
+GUI.main();
+```
+Then the following output is given:
+```
+Welcome to the project planner for Softwarehuset A/S
+Following operations are available: 
+ 1: Create project 
+ 2: Add activity 
+ 3: Add worker 
+ 4: Register time 
+ 5: Assign project manager 
+ 6: Rename project 
+ 7: Rename activity 
+ 8: Edit registered time 
+ 9: Get status
+ 0: Exit 
+```
+Then by inputting
+```
+1
+```
 
-It is a good idea to change the name of the project. Don't forget to also change the name in the `pom.xml` file. 
+into the terminal, you select option 1: and as such are presented with:
+```
+Input project name:
+```
+After the project name is entered as a string, the request:
+```
+Input project start date, as 'year,month,day': 
+```
+***It is extremly important that year is inputted as an integer, the same is valid for month
+and date***
 
-If you use a different version than Java 11, then change the `maven.compiler.source` and `maven.compiler.target` properties in the `pom.xml` file. This should only be needed if you want to use Java 8. The setting Java 11 is compatible with all installed JDK's of version 11 or higher.
+The following is an example of a valid date input:
+```
+2022,01,01
+```
+By following the on-screen instructions, the rest of the program 
+can be executed.
 
-It can be run through Maven, e.g., `mvn clean test`, Eclipse (run as JUnit test), and ItelliJ. 
+Entering:
+```
+0
+```
+when the selection menu is present, will always exit the GUI and program, thus losing the current
+instance of the program.
 
-In case of Eclipse, if the run configuratiom for the test is set to JUnit 4, all the Cucumber tests and all the JUnit 4 tests are run, but not the JUnit 5 tests. If the setting is set to JUnit 5, then all the tests are run.
+Registering worker hours
+========================
+The following is an example of inputting work hours on a specfic activity.
+After entering the workers initals you are met with:
+```
+Input date as, 'year,month,day': 
+```
+Here a valid input will be:
+```
+2022,01,01
+```
+After inputting the date, the following output is given:
+```
+Input start time as 'hour,minutes': 
+```
+Here a valid input will be:
+```
+14,30
+```
+And likewise for the end time.
 
-For using Cucumber in Eclipse, you want to install the Cucumber plugin. In Eclipse, installing the Cucumber plugin is offered to you once you try to open a file with extension .feature. After the plugin is installled and Eclipse is restarted, you can select the project and then choose in the right button menu "Configure::Convert to Cucumber Project ...". This allows you later in a feature file to jump directly to the corresponding step definitions.
+Functionallity restrictions
+===========================
+When using the GUI, you cannot add an activity to a non existant project,
+and as such an error message will be outputted.
 
-When you use this project as a starting point, please remember to remove those fature files and classes that were just included for demonstration purposes.
+Running Cucumber and JUnit tests
+================================
+Running the file
+> AcceptanceTest
+
+with JUnit, will run all the Cucumber feature files.
+If inclusion of JUnit whitebox tests is wanted, the run configuration
+for JUnit needs to include the whole project.

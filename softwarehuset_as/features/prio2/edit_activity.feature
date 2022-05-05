@@ -24,3 +24,8 @@ Scenario: The project manager edits a non-existing activity
     And the project with number 22001 does not have an activity with name "Activity 1"
     When activity "Activity 1" in project 22001 is edited with a new name "Activity 2"
     Then the error message "Activity not found" is given
+
+Scenario: The project manager tries to add an activity with illegal dates
+    Given a project with number 22001 and name "Project 1" exists
+    When an activity with name "Activity 1" from date "NOTADATE" to "2020,06,01" is added to project 22001
+    Then the error message "Date is invalid" is given

@@ -42,7 +42,7 @@ public class EventSteps {
             }
             try {
                 RApp.getWorkerFromInitials(workerInitials).registerHours(startTime, endTime, date, activity1);
-            } catch (EventOverlapException e) {
+            } catch (EventOverlapException | IllegalDateException e) {
                 errorMessage.setErrorMessage(e.getMessage());
             }
     }
@@ -58,7 +58,7 @@ public class EventSteps {
         Activity activity1 = RApp.getProjectFromID(projectID).getActivityFromName(activityName);
         try {
             RApp.getWorkerFromInitials(workerInitials).registerHours(startTime, endTime, date, activity1);
-        } catch (EventOverlapException e) {
+        } catch (EventOverlapException | IllegalDateException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
@@ -74,7 +74,7 @@ public class EventSteps {
     public void the_worker_changes_the_timeframe_of_the_event_with_id_to_to(String workerInitials, int eventID, String newStartTime, String newEndTime, String newDate) {
         try {
             RApp.getWorkerFromInitials(workerInitials).editEvent(eventID, newStartTime, newEndTime, newDate);
-        } catch (EventOverlapException e) {
+        } catch (EventOverlapException | IllegalDateException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
