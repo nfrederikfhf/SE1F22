@@ -9,7 +9,7 @@ public class Event {
     private GregorianCalendar startTime;
     private GregorianCalendar endTime;
     private GregorianCalendar date;
-    private Long hoursWorked;
+    private double hoursWorked;
     private Activity relatedActivity;
     private int ID;
 
@@ -22,7 +22,7 @@ public class Event {
         } catch (IllegalDateException e){
             throw e;
         }
-        this.hoursWorked = (this.endTime.getTimeInMillis() - this.startTime.getTimeInMillis()) / 3600000;
+        this.hoursWorked = (float)((this.endTime.getTimeInMillis() - this.startTime.getTimeInMillis())) / 3600000;
         this.relatedActivity = relatedActivity;
         this.ID = ID;
     }
@@ -43,7 +43,7 @@ public class Event {
         return this.date;
     }
 
-    public long getHoursWorked(){
+    public double getHoursWorked(){
         return this.hoursWorked;
     }
 

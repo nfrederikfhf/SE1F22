@@ -105,9 +105,10 @@ public class Worker {
     }
 
     //Jacob
-    public int getHoursWorkedOnActivity(Activity activity) {
+    public double getHoursWorkedOnActivity(Activity activity) {
 
-        int sum = 0;
+        //TODO Make float
+        double sum = 0;
         for (Event event : this.getEvents()){           //1
             if(event.getRelatedActivity()==activity){   //2
                 sum += event.getHoursWorked();

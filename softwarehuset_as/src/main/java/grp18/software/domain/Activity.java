@@ -49,7 +49,7 @@ public class Activity {
         for (Worker worker : workers) {
             stringBuilder.append(prefix + "|__" + worker.getInitials()+"\n");
 
-            int hours = worker.getHoursWorkedOnActivity(this);
+            double hours = worker.getHoursWorkedOnActivity(this);
 
             if (i++ == workers.size() - 1) {
                 stringBuilder.append(prefix + "   |__Hours worked: " + hours+"\n");
