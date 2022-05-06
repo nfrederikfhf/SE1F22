@@ -6,6 +6,7 @@ import grp18.software.app.IllegalDateException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
 //William
 public class Worker {
     private String initials;
@@ -106,14 +107,25 @@ public class Worker {
 
     //Jacob
     public double getHoursWorkedOnActivity(Activity activity) {
-
-        //TODO Make float
+        assert true; //No pre condition
+        if (activity == null) {
+            return 0;
+        }
         double sum = 0;
-        for (Event event : this.getEvents()){           //1
-            if(event.getRelatedActivity()==activity){   //2
+        double sumStartOfLoop;
+        for (Event event : this.getEvents()) {           //1
+            sumStartOfLoop = sum;
+            if (event.getRelatedActivity() == activity) {   //2
                 sum += event.getHoursWorked();
             }
+            assert (sum >= sumStartOfLoop); //Loop invariant condition
         }
+        assert (sum >= 0); //Post condition
+        assert (this.getEvents().stream()
+                .filter(anyEvent -> anyEvent.getRelatedActivity() == activity)
+                .map(Event::getHoursWorked)
+                .mapToDouble(hoursWorked -> hoursWorked)
+                .sum() == sum); //Post conditions
         return sum;
     }
 }
