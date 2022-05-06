@@ -108,14 +108,14 @@ public class Worker {
     //Jacob
     public double getHoursWorkedOnActivity(Activity activity) {
         assert true; //No pre condition
-        if (activity == null) {
+        if (activity == null) {     //1
             return 0;
         }
         double sum = 0;
         double sumStartOfLoop;
-        for (Event event : this.getEvents()) {           //1
+        for (Event event : this.getEvents()) {           //2
             sumStartOfLoop = sum;
-            if (event.getRelatedActivity() == activity) {   //2
+            if (event.getRelatedActivity() == activity) {   //3
                 sum += event.getHoursWorked();
             }
             assert (sum >= sumStartOfLoop); //Loop invariant condition
