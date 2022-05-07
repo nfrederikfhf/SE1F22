@@ -34,6 +34,11 @@ public class Worker {
         return activities.size();
     }
 
+    public List<Activity> getActivities() {
+        return activities;
+    }
+
+
     //William
     public void addActivity(Activity activity) {
         this.activities.add(activity);

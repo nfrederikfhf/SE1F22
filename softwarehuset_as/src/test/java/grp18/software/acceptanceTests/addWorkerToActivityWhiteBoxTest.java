@@ -14,6 +14,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 //William
 class addWorkerToActivityWhiteBoxTest {
@@ -23,6 +26,7 @@ class addWorkerToActivityWhiteBoxTest {
     private Worker worker2 = new Worker("WT");
     private Worker worker3 = null;
     private Worker worker4 = new Worker("WF");
+    private List<Worker> workers = new ArrayList<>();
     private ErrorMessageHolder errorMessage;
     private RegistrationApp RApp;
 
@@ -65,6 +69,7 @@ class addWorkerToActivityWhiteBoxTest {
         } catch (OperationNotAllowedException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
+        Assertions.assertTrue(activity1.getWorkers().contains(worker1));
         Assertions.assertEquals("Worker Already exists in database", errorMessage.getErrorMessage());
     }
 
@@ -78,8 +83,10 @@ class addWorkerToActivityWhiteBoxTest {
         } catch (OperationNotAllowedException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
-
+        workers.add(worker1);
+        workers.add(worker2);
         Assertions.assertEquals(2,activity1.getWorkers().size());
+        Assertions.assertTrue(activity1.getWorkers().equals(workers));
         Assertions.assertEquals("",errorMessage.getErrorMessage());
     }
 
@@ -95,6 +102,7 @@ class addWorkerToActivityWhiteBoxTest {
 
         Assertions.assertEquals("The worker is invalid",errorMessage.getErrorMessage());
         Assertions.assertEquals(0,activity1.getWorkers().size());
+        Assertions.assertFalse(activity1.getWorkers().contains(worker3));
     }
 
     @Test
@@ -107,6 +115,7 @@ class addWorkerToActivityWhiteBoxTest {
             errorMessage.setErrorMessage(e.getMessage());
         }
         Assertions.assertEquals(1,activity1.getWorkers().size());
+        Assertions.assertTrue(activity1.getWorkers().contains(worker4));
         Assertions.assertEquals("",errorMessage.getErrorMessage());
     }
 
