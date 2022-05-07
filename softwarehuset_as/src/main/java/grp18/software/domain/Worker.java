@@ -46,6 +46,7 @@ public class Worker {
 
     //Niels
     public Boolean validateNoEventOverlap(Event newEvent) {
+        assert newEvent != null;
         List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(newEvent.getDate())).collect(Collectors.toList());
 
         for (Event oldEvent : sameDateEvents) {                             //1
@@ -60,8 +61,7 @@ public class Worker {
             if (oldstart <= newend && oldend >= newend) {                   //3
                 return false;
             }
-
-            if (oldstart >= newstart && oldend <= newend) {                 //5
+            if (oldstart >= newstart && oldend <= newend) {                 //4
                 return false;
             }
         }

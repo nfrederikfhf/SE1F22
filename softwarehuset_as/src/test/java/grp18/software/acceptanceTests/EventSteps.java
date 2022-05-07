@@ -31,8 +31,8 @@ public class EventSteps {
         assertEquals(RApp.getWorkerFromInitials(workerInitials).getEvents().size(),0);
     }
 
-    @When("the worker {string} registers working hours from {string} to {string} on date {string} with ID {int} related to activity {string} of project {int}")
-    public void the_worker_registers_working_hours_from_to_on_date_with_id_related_to_activity_to_project(String workerInitials, String startTime, String endTime, String date, int eventID, String activityName, int projectID) {
+    @When("the worker {string} registers working hours from {string} to {string} on date {string} related to activity {string} of project {int}")
+    public void the_worker_registers_working_hours_from_to_on_date_with_id_related_to_activity_to_project(String workerInitials, String startTime, String endTime, String date, String activityName, int projectID) {
             Activity activity1 = RApp.getProjectFromID(projectID).getActivityFromName(activityName);
             try {
                 event1 = new Event(startTime, endTime,date, activity1, 1);
@@ -46,14 +46,14 @@ public class EventSteps {
             }
     }
 
-    @Then("an event labeled {string} with ID {int} related to activity {string} is added to the worker {string}'s eventlist")
-    public void an_event_labeled_with_id_related_to_activity_is_added_to_the_worker_s_eventlist(String eventLabel, int eventID, String activityName, String workerInitials) {
+    @Then("an event with ID {int} related to activity {string} is added to the worker {string}'s eventlist")
+    public void an_event_labeled_with_id_related_to_activity_is_added_to_the_worker_s_eventlist(int eventID, String activityName, String workerInitials) {
         assertTrue(RApp.getWorkerFromInitials(workerInitials).getEvents().contains(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID)));
         assertEquals(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID).getRelatedActivity().getActivityName(),activityName);
     }
 
-    @Given("the worker {string} has an event from {string} to {string} on date {string} with ID {int} related to activity with name {string} in project with ID {int}")
-    public void the_worker_has_an_event_from_to_on_date_with_id(String workerInitials, String startTime, String endTime, String date, int eventID, String activityName, int projectID) {
+    @Given("the worker {string} has an event from {string} to {string} on date {string} related to activity with name {string} in project with ID {int}")
+    public void the_worker_has_an_event_from_to_on_date_with_id(String workerInitials, String startTime, String endTime, String date, String activityName, int projectID) {
         Activity activity1 = RApp.getProjectFromID(projectID).getActivityFromName(activityName);
         try {
             RApp.getWorkerFromInitials(workerInitials).registerHours(startTime, endTime, date, activity1);
@@ -63,8 +63,8 @@ public class EventSteps {
     }
 
 
-    @Then("the event labeled {string} from {string} to {string} on date {string} with ID {int} is not registered to the worker {string}'s eventlist")
-    public void the_event_labeled_from_to_on_date_with_id_is_not_registered_to_the_worker_s_eventlist(String eventName, String startTime, String endTime, String date, int eventID, String workerInitials) {
+    @Then("the event with ID {int} is not registered to the worker {string}'s eventlist")
+    public void the_event_labeled_from_to_on_date_with_id_is_not_registered_to_the_worker_s_eventlist( int eventID, String workerInitials) {
         Boolean boll = RApp.getWorkerFromInitials(workerInitials).getEvents().contains(RApp.getWorkerFromInitials(workerInitials).getEventFromID(eventID));
         assertFalse(boll);
     }
