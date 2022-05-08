@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="Workspace xml now works">
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/features/prio1/add_worker.feature" beforeDir="false" afterPath="$PROJECT_DIR$/features/prio1/add_worker.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ActivitySteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ActivitySteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ProjectSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/ProjectSteps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/WorkerSteps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/WorkerSteps.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -42,12 +43,8 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="26405mo8hRCIq3Zs9D21K6tXiTt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -90,6 +87,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Workspace xml now works">
       <created>1648470532269</created>
@@ -97,6 +95,12 @@
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
       <updated>1648470532270</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <created>1652013271462</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1652013271462</updated>
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -111,6 +115,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Workspace xml now works" />
