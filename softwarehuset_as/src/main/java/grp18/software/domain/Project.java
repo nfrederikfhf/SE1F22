@@ -89,8 +89,8 @@ public class Project{
         if(worker == null){ // 2
             throw new OperationNotAllowedException("The worker is invalid");
         }
-        worker.addActivity(activity); // 3
-        activity.addWorker(worker); // 4
+        worker.addActivity(activity); // 2
+        activity.addWorker(worker); // 2
 
         assert activity.getWorkers().contains(worker) && worker.getActivities().contains(activity); // Post conditions
     }
