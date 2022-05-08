@@ -21,6 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 //William
 class addWorkerToActivityWhiteBoxTest {
     private Activity activity1 = new Activity("Activity1","2022,01,01","2022,01,05");
+    private Activity activity2 = null;
     private Project project1 = new Project("Project1");
     private Worker worker1 = new Worker("WO");
     private Worker worker2 = new Worker("WT");
@@ -117,6 +118,18 @@ class addWorkerToActivityWhiteBoxTest {
         Assertions.assertEquals(1,activity1.getWorkers().size());
         Assertions.assertTrue(activity1.getWorkers().contains(worker4));
         Assertions.assertEquals("",errorMessage.getErrorMessage());
+    }
+
+    @Test
+    @DisplayName("Case E")
+    public void addWorkertoActivityWhiteBoxTestTestCaseE(){
+        // Add a worker to a non existing actiivty
+        try {
+            project1.addWorkerToActivity(worker1, activity2);
+        } catch (OperationNotAllowedException e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+        Assertions.assertEquals("The activity is invalid",errorMessage.getErrorMessage());
     }
 
 
