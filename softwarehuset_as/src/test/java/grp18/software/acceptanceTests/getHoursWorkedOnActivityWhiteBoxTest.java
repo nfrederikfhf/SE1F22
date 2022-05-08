@@ -25,12 +25,19 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
     @DisplayName("Case A")
     public void getHoursWorkedOnActivityWhiteBoxTestCaseA(){
 
-        Assertions.assertEquals(0, worker.getHoursWorkedOnActivity(activity1));
+        Assertions.assertEquals(0, worker.getHoursWorkedOnActivity(null));
     }
 
     @Test
     @DisplayName("Case B")
     public void getHoursWorkedOnActivityWhiteBoxTestCaseB(){
+
+        Assertions.assertEquals(0, worker.getHoursWorkedOnActivity(activity1));
+    }
+
+    @Test
+    @DisplayName("Case C")
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseC(){
         try {
             worker.registerHours("09,00", "17,30", "2022,06,02", activity1);
         } catch (EventOverlapException | IllegalDateException e){
@@ -40,8 +47,8 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
     }
 
     @Test
-    @DisplayName("Case C")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseC(){
+    @DisplayName("Case D")
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseD(){
         try {
             worker.registerHours("09,00", "17,00", "2022,06,02", activity2);
         } catch (EventOverlapException | IllegalDateException e){
@@ -50,8 +57,8 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
         Assertions.assertEquals(0,worker.getHoursWorkedOnActivity(activity1));
     }
     @Test
-    @DisplayName("Case D")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseD(){
+    @DisplayName("Case E")
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseE(){
     try {
         worker.registerHours("09,00", "17,00", "2022,06,02", activity1);
         worker.registerHours("09,00", "17,00", "2022,06,03", activity2);
@@ -62,8 +69,8 @@ class getHoursWorkedOnActivityWhiteBoxTest extends TestCase{
     }
 
     @Test
-    @DisplayName("Case E")
-    public void getHoursWorkedOnActivityWhiteBoxTestCaseE(){
+    @DisplayName("Case F")
+    public void getHoursWorkedOnActivityWhiteBoxTestCaseF(){
 
         activity1.addWorker(worker);
         try {
