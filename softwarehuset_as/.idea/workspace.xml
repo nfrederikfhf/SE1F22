@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1b54bd2-f679-4976-b895-03c45680f96c" name="Changes" comment="Workspace xml now works">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codestream.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codestream.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/registerHoursWhiteBoxTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/grp18/software/acceptanceTests/registerHoursWhiteBoxTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +65,7 @@
       <recent name="C:\Users\Bruger\IdeaProjects\SE1F22\softwarehuset_as\use_cases" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.registerHoursWhiteBoxTest.registerHoursWhiteBoxTestCaseB">
     <configuration name="AcceptanceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="softwarehuset" />
       <extension name="coverage">
@@ -81,8 +81,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="registerHoursWhiteBoxTest.registerHoursWhiteBoxTestCaseA" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="softwarehuset" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="grp18.software.acceptanceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="grp18.software.acceptanceTests" />
+      <option name="MAIN_CLASS_NAME" value="grp18.software.acceptanceTests.registerHoursWhiteBoxTest" />
+      <option name="METHOD_NAME" value="registerHoursWhiteBoxTestCaseA" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="registerHoursWhiteBoxTest.registerHoursWhiteBoxTestCaseB" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="softwarehuset" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="grp18.software.acceptanceTests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="grp18.software.acceptanceTests" />
+      <option name="MAIN_CLASS_NAME" value="grp18.software.acceptanceTests.registerHoursWhiteBoxTest" />
+      <option name="METHOD_NAME" value="registerHoursWhiteBoxTestCaseB" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.registerHoursWhiteBoxTest.registerHoursWhiteBoxTestCaseB" />
+        <item itemvalue="JUnit.registerHoursWhiteBoxTest.registerHoursWhiteBoxTestCaseA" />
         <item itemvalue="JUnit.AcceptanceTest" />
       </list>
     </recent_temporary>

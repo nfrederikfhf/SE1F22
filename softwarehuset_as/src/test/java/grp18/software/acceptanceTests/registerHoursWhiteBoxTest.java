@@ -27,7 +27,7 @@ class registerHoursWhiteBoxTest extends TestCase {
         } catch (IllegalDateException | EventOverlapException e) {
             e.printStackTrace();
         }
-        Assertions.assertEquals(worker.registerHours("09,00", "17,30", "2022,06,02",activity1));
+        Assertions.assertEquals(8.5, worker.getHoursWorkedOnActivity(activity1));
     }
 
     @Test
