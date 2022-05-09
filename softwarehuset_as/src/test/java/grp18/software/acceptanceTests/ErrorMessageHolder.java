@@ -1,5 +1,6 @@
 package grp18.software.acceptanceTests;
 
+//Vincent
 public class ErrorMessageHolder {
     private String errorMessage = "";
 
