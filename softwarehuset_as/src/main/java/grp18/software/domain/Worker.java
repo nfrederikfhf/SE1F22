@@ -46,7 +46,6 @@ public class Worker {
 
     //Niels
     public Boolean validateNoEventOverlap(Event newEvent) {
-        assert newEvent != null;
         List<Event> sameDateEvents = this.events.stream().filter(x -> x.getDate().equals(newEvent.getDate())).collect(Collectors.toList());
 
         for (Event oldEvent : sameDateEvents) {                             //1
@@ -88,9 +87,9 @@ public class Worker {
         return this.events.stream().filter(x -> x.getID() == ID).findFirst().orElse(null);
     }
 
-    //Jacob
+    //Jacob, DbC - Niels
     public void editEvent(int eventID, String newStartTime, String newEndTime, String newDate) throws EventOverlapException, IllegalDateException {
-
+        assert events.stream().anyMatch(e -> e.getID() == eventID); //Pre condition
         Event oldEvent = getEventFromID(eventID);
         events.remove(oldEvent);
         try {
@@ -101,6 +100,12 @@ public class Worker {
             }
             oldEvent.setTimeframe(newDate, newStartTime, newEndTime);
             events.add(oldEvent);
+            assert events.stream()                                           //Post condition
+                    .anyMatch(e -> e.getStartTime().getTimeInMillis() == newEvent.getStartTime().getTimeInMillis()
+                    && e.getEndTime().getTimeInMillis() == newEvent.getEndTime().getTimeInMillis()
+                    && e.getDate().getTimeInMillis() == newEvent.getDate().getTimeInMillis()
+                    && e.getID() == oldEvent.getID()
+                    && e.getRelatedActivity() == oldEvent.getRelatedActivity());
         } catch (IllegalDateException e) {
             throw e;
         }
