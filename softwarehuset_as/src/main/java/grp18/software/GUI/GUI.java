@@ -415,6 +415,7 @@ public class GUI {
         }
     }
     public static void getAvailableWorkersOnActivity(Scanner scanner,String activityName, int projectID){
+        // Function to output all workers assigned to a specfic activity
         String available;
         List<Worker> workers = new ArrayList<>();
         System.out.println("Do you want a list of available workers? [y/n]");
