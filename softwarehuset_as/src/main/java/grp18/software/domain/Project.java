@@ -72,7 +72,7 @@ public class Project{
         }
         return getActivityFromName(name);
     }
-    //Vincent
+    //William
     public void addActivity (Activity activity) throws OperationNotAllowedException {
         if (getActivityFromName(activity.getActivityName())!=null){
             throw new OperationNotAllowedException("Name for activity already used in the project");
