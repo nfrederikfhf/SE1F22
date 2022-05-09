@@ -30,10 +30,12 @@ public class GUI {
         Activity activity = new Activity("","0,0,0","0,0,0");
         Worker worker;
         Event event;
+        List<Event> events = new ArrayList<>();
 
         int projectID;
         String activityName;
         String workerName;
+        int eventID;
 
         String startDate = "0,0,0";
         String endDate = "0,0,0";
@@ -294,7 +296,43 @@ public class GUI {
                         System.out.println("Activity: " + activityName + " has been renamed to: " + newActivityName);
                         break;
 
-                    //Jacob
+                    case 8: // Edit registered hours
+                        getAvailableWorkers(scanner); //Generate a list of available workers if wanted
+                        System.out.println("Input worker name: ");
+                        workerName = scanner.nextLine();
+                        if (RegistrationApp.INSTANCE.getWorkerFromInitials(workerName) == null) { // Check if worker exists
+                            System.out.println("Worker not found, try again");
+                            break;
+                        }
+                        worker = RegistrationApp.INSTANCE.getWorkerFromInitials(workerName);
+                        System.out.println("Following events are available for worker: ");
+                        events = worker.getEvents();
+                        for(Event event1 : events){ // Print all available events for the worker
+                            System.out.println("ID: " + event1.getID());
+                        }
+                        System.out.println("Input the EventID: ");
+                        eventID = Integer.parseInt(scanner.next() + scanner.nextLine());
+                        if(worker.getEventFromID(eventID) == null){ // Check if the event exists
+                            System.out.println("Event not found for the worker specified, try again");
+                        }
+
+                        //Input the new hours
+                        System.out.println("You are editing event: " + eventID);
+                        System.out.println("Input new work date, as 'year,month,day': ");
+                        date = scanner.nextLine();
+                        System.out.println("Input new start time as 'hour,minutes': ");
+                        startTime = scanner.nextLine();
+                        System.out.println("Input new end time as 'hour,minutes': ");
+                        endTime = scanner.nextLine();
+
+                        try { // Check for overlap between time registered
+                            worker.editEvent(eventID,startTime,endTime,date);
+                        } catch (EventOverlapException e) {
+                            System.out.println("Time already registered in this timeframe");
+                        }
+                        break;
+
+                        //Jacob
                     case 9:
                         System.out.println("1. Entire System\n2. A specific problem");
                         StringBuilder report = new StringBuilder();
@@ -377,6 +415,7 @@ public class GUI {
         }
     }
     public static void getAvailableWorkersOnActivity(Scanner scanner,String activityName, int projectID){
+        // Function to output all workers assigned to a specfic activity
         String available;
         List<Worker> workers = new ArrayList<>();
         System.out.println("Do you want a list of available workers? [y/n]");
