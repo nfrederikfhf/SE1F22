@@ -27,7 +27,7 @@ public class GUI {
         Boolean run = true;
         String projectName;
         Project project;
-        Activity activity;
+        Activity activity = new Activity("","0,0,0","0,0,0");
         Worker worker;
         Event event;
 
@@ -110,10 +110,11 @@ public class GUI {
                         try {
                             activity = new Activity(activityName, startDate, endDate);
                             addActivity(projectID, activity); // Add an activity
-                            System.out.println("Project created with ID: " + activity.getActivityName());
+
                         } catch (IllegalDateException e) {
                             System.out.println(e.getMessage());
                         }
+                        System.out.println("Project created with ID: " + activity.getActivityName());
                         break;
 
                     case 3: // Add one of the pre-generated workers to an activity in of the created projects
@@ -181,7 +182,8 @@ public class GUI {
                         }
                         activity = project.getActivityFromName(activityName); // Get the activity object
 
-                        getAvailableWorkers(scanner); //Generate a list of available workers if wanted
+                        getAvailableWorkersOnActivity(scanner,activityName,projectID); //Generate a list of available
+                        // workers assigned to the activity if wanted
                         System.out.println("What are your initials?"); // Name from generated worker list
                         workerName = scanner.nextLine();
                         if (RegistrationApp.INSTANCE.getWorkerFromInitials(workerName) == null) { // Check if worker exists
@@ -369,6 +371,18 @@ public class GUI {
         available = scanner.nextLine();
         if(available.equals("y")){
             workers = RegistrationApp.INSTANCE.getWorkers();
+            for(Worker worker1 : workers){
+                System.out.println("Initials: " + worker1.getInitials());
+            }
+        }
+    }
+    public static void getAvailableWorkersOnActivity(Scanner scanner,String activityName, int projectID){
+        String available;
+        List<Worker> workers = new ArrayList<>();
+        System.out.println("Do you want a list of available workers? [y/n]");
+        available = scanner.nextLine();
+        if(available.equals("y")){
+            workers = RegistrationApp.INSTANCE.getProjectFromID(projectID).getActivityFromName(activityName).getWorkers();
             for(Worker worker1 : workers){
                 System.out.println("Initials: " + worker1.getInitials());
             }
