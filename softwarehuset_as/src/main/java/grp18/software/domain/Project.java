@@ -81,16 +81,20 @@ public class Project{
     }
     //William
     public void addWorkerToActivity(Worker worker, Activity activity) throws OperationNotAllowedException{
-        assert activity != null; // Pre condition
+        assert true; // Pre condition
 
-        if (activity.getWorkers().contains(worker)){ // 1
-            throw new OperationNotAllowedException("Worker Already exists in database");
+        if (activity == null){ // 4
+            throw new OperationNotAllowedException("The activity is invalid");
         }
         if(worker == null){ // 2
             throw new OperationNotAllowedException("The worker is invalid");
         }
-        worker.addActivity(activity); // 2
-        activity.addWorker(worker); // 2
+
+        if (activity.getWorkers().contains(worker)){ // 1
+            throw new OperationNotAllowedException("Worker Already exists in database");
+        }
+        worker.addActivity(activity); // 3
+        activity.addWorker(worker); // 3
 
         assert activity.getWorkers().contains(worker) && worker.getActivities().contains(activity); // Post conditions
     }
