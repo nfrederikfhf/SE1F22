@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 //Vincent
 class registerHoursWhiteBoxTest extends TestCase {
-    private ErrorMessageHolder errorMessage;
+    private ErrorMessageHolder errorMessage = new ErrorMessageHolder();
     private Worker worker = new Worker("VINN");
     private Activity activity1 = new Activity("Activity 1","2022,06,01","2022,06,10");
 
@@ -28,17 +28,24 @@ class registerHoursWhiteBoxTest extends TestCase {
         } catch (IllegalDateException | EventOverlapException e) {
             e.printStackTrace();
         }
-        Assertions.assertEquals(8.5, worker.getHoursWorkedOnActivity(activity1));
+        Assertions.assertEquals(8, worker.getHoursWorkedOnActivity(activity1));
     }
 
     @Test
     @DisplayName("Case B")
     public void registerHoursWhiteBoxTestCaseB(){
         try {
-        worker.registerHours("09,00", "16,00", "2022,06,02", activity1);
+            worker.registerHours("09,00", "17,00", "2022,06,02", activity1);
         } catch (IllegalDateException | EventOverlapException e) {
-        e.printStackTrace();
+            errorMessage.setErrorMessage(e.getMessage());
         }
-        Assertions.assertEquals("Date is invalid",errorMessage.getErrorMessage());
+
+        try {
+            worker.registerHours("09,00", "17,00", "2022,06,02", activity1);
+        } catch (IllegalDateException | EventOverlapException e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+
+            Assertions.assertEquals("Event is overlapping another event",errorMessage.getErrorMessage());
         }
         }

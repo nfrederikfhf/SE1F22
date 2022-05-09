@@ -6,13 +6,14 @@ import grp18.software.tools.StringToCalender;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-//Jacob class Owner
+//Vincent class Owner
 public class Activity {
     private String activityName;
     private Calendar startDate;
     private Calendar endDate;
     private List<Worker> workers = new ArrayList<>();
 
+    //Constructor made by Jacob
     public Activity(String activityName, String startDate, String endDate) throws IllegalDateException {
         this.activityName = activityName;
         try{
@@ -44,7 +45,7 @@ public class Activity {
         return this.workers;
     }
 
-    //Jacob
+    //getreport made by Jacob
     public void getStatusReport(String prefix, StringBuilder stringBuilder){
 
         stringBuilder.append(prefix.substring(0,prefix.length()-3)+"|__" +this.activityName+":\n");
